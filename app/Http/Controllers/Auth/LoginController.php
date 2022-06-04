@@ -56,7 +56,7 @@ class LoginController extends Controller
             Alert::toast('Selamat Datang, '.$user_dt->name.'!', 'success');
 
             return redirect('chief/dashboard');
-        } elseif ($user->hasRole('chief_of_division') || $user->hasRole('chief_of_sub_division')) {
+        } elseif ($user->hasRole('chief_of_division') || $user->hasRole('chief_of_sub_division') || $user->hasRole('coordinator') || $user->hasRole('personil')) {
             Alert::toast('Selamat Datang, '.$user_dt->name.'!', 'success');
 
             return redirect('chief_div/dashboard');
