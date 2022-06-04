@@ -1,0 +1,6 @@
+- Copy env.example
+- Setup Your Database 
+- Migrate Database
+- Composer Install
+- Clear config and cache -> "php artisan config:cache"
+- Finish
