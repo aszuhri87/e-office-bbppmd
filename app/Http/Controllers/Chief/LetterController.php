@@ -287,11 +287,12 @@ class LetterController extends ApiController
         ])
         ->with(['letter_user' => function ($query) {
             $query->select(
-                ['letter_users.*', 'letter_users.user_id', 'positions.id as position_id', DB::raw("CONCAT(positions.level,' ', positions.name) as p_level"), DB::raw("
+                ['letter_users.*', 'letter_users.user_id', 'positions.id as position_id', DB::raw("CONCAT(positions.level,' ', positions.name) as p_level"),
+                DB::raw("
                 CASE
-                WHEN letter_users.notes IS NOT NULL
+                WHEN letter_users.notes IS NOT NULL AND positions.level IS NOT NULL AND positions.name IS NOT NULL
                 THEN CONCAT(letter_users.notes,' - ',positions.level,' ', positions.name)
-                END as note")],
+                END as note"), ],
                 )
                 ->join('users', 'users.id', 'letter_users.user_id')
                 ->leftJoin('positions', 'positions.user_id', 'users.id')
