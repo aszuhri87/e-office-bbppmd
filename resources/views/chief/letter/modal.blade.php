@@ -134,11 +134,19 @@
                             {{-- <hr> --}}
                             <div class="row mt-1">
 
-                                <div class="custom-control custom-control-primary custom-checkbox mb-1" >
+                                {{-- <div class="custom-control custom-control-primary custom-checkbox mb-1" >
                                     <input type="checkbox" name="acc" class="custom-control-input" value="Disetujui" id="acc" >
                                     <label class="custom-control-label" for="acc">Acc</label>
 
-                                </div>
+                                </div> --}}
+                                <div class="col-12">
+                                    <label class="form-label mt-auto">Catatan</label>
+                                        <div class="form-label-group mb-0">
+                                            <textarea class="form-control char-textarea" name="notes" id="textarea-counter" rows="3" placeholder="Catatan"></textarea>
+                                        </div>
+                                        <hr>
+
+                               </div>
                                 {{-- <div class="col-6">
                                     <label class="form-label mt-auto">Perihal</label>
                                     <div class="form-label-group mb-0">

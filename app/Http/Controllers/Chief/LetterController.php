@@ -328,16 +328,20 @@ class LetterController extends ApiController
     {
         try {
             $result = DB::transaction(function () use ($request,$id) {
-                if (!empty($request->acc)) {
-                    $letter = Letter::where('id', $id)
-                ->update([
-                    'status' => $request->acc,
-                ]);
+                $user = User::where('id', Auth::id())->first();
+
+                $user->with('roles')->where('id', Auth::id())->first();
+
+                // if ($user->hasRole('chief')) {
+                if (!empty($request->notes)) {
+                    $notes = LetterUser::create(
+                       [
+                        'letter_id' => $id,
+                            'notes' => $request->notes,
+                            'user_id' => Auth::id(),
+                        ]);
                 }
-
-                // dd($request->input('name'));
-
-                // $result = DB::transaction(function () use ($request,$id) {
+                // }
 
                 if (!empty($request->input('forwarded'))) {
                     $forward[] = $request->input('forwarded');
