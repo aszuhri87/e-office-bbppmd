@@ -25,8 +25,7 @@
                 $('#form-position').attr('action', $(this).attr('href'));
                 $('#form-position').attr('method','PUT');
                 $('#form-position').find('input[name="name"]').val(data.name);
-                $('#form-position').find('input[name="level"]').val(data.level);
-
+                $('#form-position').find('select[name="level"]').find('option[value="' + data.level + '"]').prop('selected', true);
                 showModal('modal-position');
             });
 

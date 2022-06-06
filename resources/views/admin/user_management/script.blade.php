@@ -28,8 +28,9 @@
                     $('#form-manage-user').find('input[name="name"]').val(data.name);
                     $('#form-manage-user').find('input[name="username"]').val(data.username);
                     $('#form-manage-user').find('input[name="email"]').val(data.email);
-                    // $('#form-manage-user').find('input[name="password"]').val(data.password);
-                    $('#form-sub-unit').find('select[name="select_unit"]').val(data.select_unit);
+                    // // $('#form-manage-user').find('input[name="password"]').val(data.password);
+                    // $('#form-sub-unit').find('select[name="select_unit"]').val(data.select_positio);
+                    $('#form-manage-user').find('select[name="select_position"]').find('option[value=' + data.position_id + ']').prop('selected', true);
                     showModal('modal-mng-user');
                 });
             });

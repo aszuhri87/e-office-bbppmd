@@ -57,7 +57,8 @@ class UserManageController extends Controller
     public function show($id)
     {
         $data = DB::table('users')
-        ->select('*')
+        ->select('users.*', 'positions.id as position_id')
+        ->join('positions', 'positions.user_id', 'users.id')
         ->leftJoin('units', 'units.id', 'users.unit_id')
         ->where('users.id', $id)
         ->first();
