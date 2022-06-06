@@ -78,10 +78,13 @@
                         for(i in data.letter_user){
                             $('#d-'+data.letter_user[i].position_id).val(data.letter_user[i].position_id).prop('checked', true).attr("disabled", true);
 
-
-                        $('div#catatan').append(`
-                                    <p>`+data.letter_user[i].note+`</p>
+                        if (data.letter_user[i].note != null){
+                            $('div#catatan').append(`
+                                <p>`+data.letter_user[i].note+`</p>
                             `);
+                        }
+
+
                         }
                         $('div#files').append(`
 
@@ -137,34 +140,6 @@
                                 <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">
                             `);
                         });
-
-                        // for(i in data.letter_unit){
-
-                        //     if(data.unit_letters[i].wish_name == 'Lain-lain'){s
-                        //         $('input[name="other_wish"][value="'+data.unit_letters[i].wishes_id+'"]').prop('checked', true);
-                        //     }
-
-                        // }
-
-                        // for(i in data.unit_letter){
-                        //     $('input[name="wish['+i+']"][value="'+data.unit_letter[i].wishes_id+'"]').prop('checked', true);
-                        // }
-
-                        // $('.dropify').dropify();
-
-                        // for(i=0;i<9;i++){
-
-                        //     $('#form-letter-create').find('input[name="from"]').val(data[i].from);
-                        //     $('#form-letter-create').find('input[name="letter_number"]').val(data[i].letter_number);
-                        //     $('#form-letter-create').find('input[name="date"]').val(data[i].date);
-                        //     $('#form-letter-create').find('input[name="agenda_number"]').val(data[i].agenda_number);
-                        //     $('#form-letter-create').find('input[name="received_date"]').val(data[i].received_date);
-                        //     $('#form-letter-create').find('textarea[name="about"]').val(data[i].about);
-                        //     $('#form-letter-create').find('input[name="sifat"][value="'+data[i].trait+'"]').prop('checked', true);
-                        //     $('#form-letter-create').find('textarea[name="about"]').val(data[i].about);
-                        //     $('#form-letter-create').find('input[name="wish['+i+']"][value="'+data[i].unit_letter[i][wishes_id]+'"]').prop('checked', true);
-                        //     $('#form-letter-create').find('input[name="forwarded['+i+']"][value="'+data[i].letter_user[i][position_id]+'"]').prop('checked', true);
-                        //     }
 
                         showModal('modal-letter');
 

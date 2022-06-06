@@ -80,9 +80,13 @@
                             $('#d-'+data.letter_user[i].position_id).val(data.letter_user[i].position_id).prop('checked', true).attr("disabled", true);
 
 
-                        $('div#catatan').append(`
+                            if (data.letter_user[i].note != null){
+                                $('div#catatan').append(`
                                     <p>`+data.letter_user[i].note+`</p>
-                            `);
+                                `);
+                            }
+
+
                         }
                         $('div#files').append(`
 

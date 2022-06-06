@@ -311,7 +311,7 @@ class LetterController extends ApiController
         // ->leftJoin('wishes', 'wishes.id', 'letter_wishes.wish_id')
         ->where('letters.id', $id)
         ->whereNull('letters.deleted_at')
-        // ->groupBy(['letters.id', 'letter_unit.wishes_id',  'letter_user.position_id', 'letter_user.p_level'])
+        ->groupBy(['letters.id'])
         ->first();
         // dd(count($data->unit_letter));
 
