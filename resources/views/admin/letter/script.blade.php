@@ -105,6 +105,7 @@
                 $('input[type="radio"]').prop('checked',false).attr('disabled', false);
                 $('input[type="text"]').prop('disabled', false);
                 $('textarea').prop('disabled', false);
+                $('input[type="date"]').prop('disabled', false);
             });
 
 
