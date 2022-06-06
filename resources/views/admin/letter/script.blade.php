@@ -85,9 +85,8 @@
                                     <p>`+data.letter_user[i].note+`</p>
                                 `);
                             }
-
-
                         }
+
                         $('div#files').append(`
 
                         <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="50%" height="600">
@@ -100,11 +99,13 @@
 
                 });
 
-                $(document).on('hide.bs.modal','#modal-document', function(event){
-                    $('input[type="checkbox"]').prop('checked',false);
-                });
             });
 
+            $(document).on('hide.bs.modal','#modal-document', function(event){
+                $('input[type="radio"]').prop('checked',false).attr('disabled', false);
+                $('input[type="text"]').prop('disabled', false);
+                $('textarea').prop('disabled', false);
+            });
 
 
             $(document).on('click', '.btn-edit', function(event){
