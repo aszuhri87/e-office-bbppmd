@@ -303,6 +303,7 @@ class LetterController extends ApiController
                 ->groupBy(['letter_users.id', 'positions.id', 'users.id']);
         },
         ])
+        ->distinct('letter_file')
         ->where('letters.id', $id)
         ->whereNull('letters.deleted_at')
         // ->groupBy(['letters.id', 'letter_unit.wishes_id',  'letter_user.position_id', 'letter_user.p_level'])
