@@ -99,6 +99,7 @@
 
                 $(document).on('hide.bs.modal','#modal-document', function(event){
                     $('input[type="checkbox"]').prop('checked',false);
+                    location.reload();
                 });
             });
 

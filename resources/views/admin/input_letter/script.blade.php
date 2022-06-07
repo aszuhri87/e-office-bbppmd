@@ -114,7 +114,9 @@
                 $('input[type="text"]').prop('disabled', false);
                 $('textarea').prop('disabled', false);
                 $('input[type="date"]').prop('disabled', false);
+                location.reload();
             });
+
 
 
             $(document).on('click', '.btn-edit', function(event){
