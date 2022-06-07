@@ -63,7 +63,7 @@ class LetterController extends ApiController
         $data = Letter::select([
             'letters.*',
             'letters.id',
-            DB::raw("to_char(letters.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi' ) as tanggal"),
+            DB::raw("to_char(letters.created_at , 'dd FMMonthFM YYYY HH24:mi' ) as tanggal"),
             // 'letter_unit.wishes_id',
             // 'letter_user.position_id',
             // 'letter_user.p_level',
@@ -87,8 +87,8 @@ class LetterController extends ApiController
                     'positions.id as position_id',
                     DB::raw("CASE
                     WHEN positions.level='Admin' OR positions.level='Super Admin'
-                    THEN CONCAT(positions.level,' - ', to_char(letter_users.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi'))
-                    ELSE CONCAT(positions.level,' ', positions.name,' - ', to_char(letter_users.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi'))
+                    THEN CONCAT(positions.level,' - ', to_char(letter_users.created_at , 'dd FMMonthFM YYYY HH24:mi'))
+                    ELSE CONCAT(positions.level,' ', positions.name,' - ', to_char(letter_users.created_at , 'dd FMMonthFM YYYY HH24:mi'))
                      END as p_level"),
                     DB::raw("
                     CASE
@@ -153,6 +153,20 @@ class LetterController extends ApiController
     {
         try {
             $result = DB::transaction(function () use ($request) {
+                $user = Position::where('level', 'Kepala')->first();
+                $user_now = User::where('id', $user->id)->first();
+
+                Mail::send('email', [
+                    'name' => $user_now->name,
+                    'email' => $user_now->email,
+                    'from' => $user_now->name,
+                    'greet' => 'Permisi,', ],
+                    function ($message) use ($user) {
+                        $message->from('achmad.s.zuhri182@gmail.com', 'SITA SUTRO BBPPM');
+                        $message->to($user->email, $user->name)
+                            ->subject('Notifikasi disposisi');
+                    });
+
                 $agenda = Letter::orderBy('created_at', 'DESC')->first();
 
                 if ($agenda == null) {
