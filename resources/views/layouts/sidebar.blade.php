@@ -29,7 +29,7 @@
                          <img src="{{asset('/logo.png')}}" alt="" style="width:90%; height:75%; padding-left:10%" >
                     </span>
                         {{-- <img src="{{asset('app-assets/images/logo.png')}}" alt="" style="width:auto; height:80%" > --}}
-                    <h2 class="brand-text text-bppm">SITA SUTRO BBPPM</h2>
+                    <h2 class="brand-text text-bppm"  style="padding-right">SITA SUTRO</h2>
                 </a></li>
             <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse" id="side-toggle"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
         </ul>
