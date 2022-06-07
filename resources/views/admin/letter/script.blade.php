@@ -55,7 +55,6 @@
                 var url = $(this).attr('href');
                 var dt = LetterTable.table().row($(this).parents('tr')).data();
 
-
                 $('div#catatan').html("");
                 $('div#files').html("");
 
@@ -88,15 +87,11 @@
                         }
 
                         $('div#files').append(`
+                            <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="150%" height="600">
+                            </embed></p>
+                        `);
 
-                        <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="150%" height="600">
-                        </embed></p>
-                            `);
-
-
-
-                        showModal('modal-document');
-
+                    showModal('modal-document');
                 });
 
             });
