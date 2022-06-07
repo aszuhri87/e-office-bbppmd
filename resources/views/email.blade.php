@@ -111,7 +111,7 @@ a:hover, a:active {
                         </p>
                         <p style="margin: 0 0 24px;">
                          Mohon proses lembar disposisi ini segera agar pemrosesan selanjutnya tidak terlalu lama
-                         anda bisa langsung menuju aplikasi SPS - BBPPM dengan menekan tombol dibawah ini
+                         anda bisa langsung menuju aplikasi SITRA SUTRO - BBPPM dengan menekan tombol dibawah ini
                         </p>
                         {{-- @php
                             $link = url('api.app.mejaseni.var-x.id/api/v1/email-verification/check/'.$account->token_verification);
@@ -121,7 +121,7 @@ a:hover, a:active {
 
                           <tr>
                             <td style="mso-padding-alt: 16px 24px; --bg-opacity: 1;">
-                              <a href="http://e-office.bbppm.var-x.id/login"  style="display: block; font-weight: 600; font-size: 14px; line-height: 100%; padding: 16px 24px; ">Menuju Aplikasi Sekarang &rarr;</a>
+                              <a href="http://e-office.bbppm.var-x.id/login"  style="background-color: #ffffff; border: solid 1px #21C68A; border-radius: 5px; box-sizing: border-box; color: #21C68A; cursor: pointer; display: inline-block; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; text-decoration: none; text-transform: capitalize; background-color: #21C68A; border-color: #21C68A; color: #ffffff;">Menuju Aplikasi Sekarang &rarr;</a>
                             </td>
                           </tr>
                         </table>
