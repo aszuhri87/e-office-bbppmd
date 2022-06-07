@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\ApiController;
 use App\Models\Letter;
 use App\Models\LetterUser;
-use App\Models\LetterWish;
 use App\Models\Position;
 use App\Models\UnitLetter;
 use App\Models\User;
@@ -64,6 +63,7 @@ class LetterController extends ApiController
         $data = Letter::select([
             'letters.*',
             'letters.id',
+            DB::raw("to_char(letters.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi' ) as tanggal"),
             // 'letter_unit.wishes_id',
             // 'letter_user.position_id',
             // 'letter_user.p_level',
@@ -87,8 +87,9 @@ class LetterController extends ApiController
                     'positions.id as position_id',
                     DB::raw("CASE
                     WHEN positions.level='Admin' OR positions.level='Super Admin'
-                    THEN positions.level
-                    ELSE CONCAT(positions.level,' ', positions.name) END as p_level"),
+                    THEN CONCAT(positions.level,' - ', to_char(letter_users.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi'))
+                    ELSE CONCAT(positions.level,' ', positions.name,' - ', to_char(letter_users.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi'))
+                     END as p_level"),
                     DB::raw("
                     CASE
                     WHEN letter_users.notes IS NOT NULL
@@ -152,19 +153,21 @@ class LetterController extends ApiController
     {
         try {
             $result = DB::transaction(function () use ($request) {
+                $agenda = Letter::orderBy('created_at', 'DESC')->first();
                 if ($request->hasFile('letter_file')) {
                     $file = $request->file('letter_file');
                     $name = date('Y-m-d_s').'_'.$file->getClientOriginalName();
                     $file->move(public_path().'/files/', $name);
                     // $path[] = $request->file('requirement_value')->store('public/files');
                 }
+
                 $data = Letter::create([
                         'name' => $request->name,
                         'from' => $request->from,
                         'letter_number' => $request->letter_number,
                         'date' => $request->date,
                         'received_date' => $request->received_date,
-                        'agenda_number' => $request->agenda_number,
+                        'agenda_number' => $agenda + 1,
                         'trait' => $request->sifat,
                         'about' => $request->about,
                         // 'signature' => $request->signature,
@@ -176,46 +179,6 @@ class LetterController extends ApiController
                     'letter_id' => $data->id,
                     'user_id' => Auth::id(),
                 ]);
-
-                // dd($request->forwarded);
-                // foreach ($request->input('forwarded') as $forward) {
-                //     $position = Position::whereIn('id', [$forward])->first();
-                //     // $user_id = $position[$i]['user_id'];
-
-                //     $letter_user = LetterUser::create([
-                //     'letter_id' => $data->id,
-                //     'user_id' => $position->user_id,
-                // ]);
-
-                //     $unit_letter = UnitLetter::create([
-                //     'letter_id' => $letter_user->letter_id,
-                //     'letter_user_id', $letter_user->id,
-                // ]);
-                // }
-
-                // for ($i = 0; $i < count($request->forwarded); ++$i) {
-                //     $position[$i] = Position::whereIn('id', [$request->forwarded[$i]])->first();
-                //     $user_id = $position[$i]['user_id'];
-
-                //     $letter_user = LetterUser::create([
-                //         'letter_id' => $data->id,
-                //         'user_id' => $user_id,
-                //     ]);
-
-                //     $unit_letter = UnitLetter::create([
-                //         'letter_id' => $letter_user->letter_id,
-                //         'letter_user_id', $letter_user->id,
-                //     ]);
-                // }
-
-                // foreach ($request->input('wish') as $w) {
-                //     $letter_wish = LetterWish::create([
-                //         'unit_letter_id' => $unit_letter->id,
-                //         'wish_id' => $w,
-                //     ]);
-                // }
-
-                // dd($position->user_id);
 
                 return $data;
             });

@@ -56,7 +56,7 @@
     <link rel="stylesheet" type="text/css" href=" {{asset('app-assets/css/plugins/charts/chart-apex.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-file-uploader.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css" integrity="sha512-In/+MILhf6UMDJU4ZhDL0R0fEpsp4D3Le23m6+ujDWXwl3whwpucJG1PEmI3B07nyJx+875ccs+yX2CqQJUxUw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{asset('css/dropify.css')}}" />
     <!-- END: Page CSS-->
 
     {{-- <link href="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone.css" rel="stylesheet" type="text/css" /> --}}
@@ -147,13 +147,14 @@
 
    <!-- BEGIN: Page JS-->
    <script src="{{asset('app-assets/js/scripts/tables/table-datatables-advanced.js')}}"></script>
-   <script src="{{asset('app-assets/js/scripts/components/components-modals.js')}}"></script>
+   <script src="dropify.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
    <script src="../../../app-assets/js/scripts/pages/app-user-list.js"></script>
    {{-- <script src="../../../app-assets/js/scripts/forms/form-select2.js"></script> --}}
    <!-- END: Page JS-->
    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
+   <script src="{{asset('js/dropify.js')}}"></script>
+   <script src="{{asset('js/jquery.blockUI.js')}}"></script>
 
 
 

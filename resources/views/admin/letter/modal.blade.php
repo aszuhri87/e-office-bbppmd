@@ -70,10 +70,10 @@
                             <hr>
                             <div class="row">
                                 <div class="col-12">
-                                    <label class="form-label mt-auto">Perihal</label>
+                                    <label class="form-label mt-auto">Hal</label>
                                     <div class="form-label-group mb-0">
-                                        <textarea data-length="150" class="form-control char-textarea" id="textarea-counter" name="about" rows="3" placeholder="Perihal"></textarea>
-                                        <label for="textarea-counter">Perihal</label>
+                                        <textarea data-length="150" class="form-control char-textarea" id="textarea-counter" name="about" rows="3" placeholder="Hal"></textarea>
+                                        <label for="textarea-counter">Hal</label>
                                     </div>
                                     <small class="textarea-counter-value float-right"><span class="char-count">0</span> / 150 </small>
                                 </div>
@@ -89,10 +89,10 @@
                             {{-- @hasrole('chief_of_division')
                             <div class="row">
                                 <div class="col-12">
-                                    <label class="form-label mt-auto">Perihal</label>
+                                    <label class="form-label mt-auto">Hal</label>
                                     <div class="form-label-group mb-0">
-                                        <textarea data-length="20" class="form-control char-textarea" id="textarea-counter" name="about" rows="3" placeholder="Perihal"></textarea>
-                                        <label for="textarea-counter">Perihal</label>
+                                        <textarea data-length="20" class="form-control char-textarea" id="textarea-counter" name="about" rows="3" placeholder="Hal"></textarea>
+                                        <label for="textarea-counter">Hal</label>
                                     </div>
                                     <small class="textarea-counter-value float-right"><span class="char-count">0</span> / 20 </small>
                                 </div>
@@ -146,10 +146,10 @@
                             {{-- <hr> --}}
                             <div class="row mt-1">
                                 {{-- <div class="col-6">
-                                    <label class="form-label mt-auto">Perihal</label>
+                                    <label class="form-label mt-auto">Hal</label>
                                     <div class="form-label-group mb-0">
-                                        <textarea data-length="20" class="form-control char-textarea" id="textarea-counter" rows="3" placeholder="Perihal"></textarea>
-                                        <label for="textarea-counter">Perihal</label>
+                                        <textarea data-length="20" class="form-control char-textarea" id="textarea-counter" rows="3" placeholder="Hal"></textarea>
+                                        <label for="textarea-counter">Hal</label>
                                     </div>
                                     <small class="textarea-counter-value float-right"><span class="char-count">0</span> / 20 </small>
                                 </div>
@@ -270,7 +270,7 @@
                         </tr>
                         <tr>
                            <td colspan="4" style="padding:10px;">
-                               Perihal :
+                               Hal :
                            </td>
                         </tr>
                         <tr>

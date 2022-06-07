@@ -11,44 +11,78 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
+
+
                      <!-- Basic -->
                      <div class="col-md-12">
-                        <form id="form-letter-create">
+                        <form id="form-letter-create" enctype="multipart/form-data">
                             @csrf
                             {{-- @hasrole('superadmin') --}}
-                            {{-- <div class="row">
+                            <div class="row">
                                 <div class="col-6 form-add">
-
-                                    <label class="form-label mt-auto">Nama Surat</label>
-                                    <div class="input-group">
-                                        <input type="text"  class="form-control" placeholder="Nama dokumen" name="name" required>
+                                    {{-- <input type="hidden"  class="form-control" name="id_cat"> --}}
+                                    <div class="form-group">
+                                        <label class="form-label mt-auto">Jenis Naskah Dinas</label>
+                                        <select class="form-control" name="name" required >
+                                            <option value="">-- Pilih Jenis Naskah --</option>
+                                            <option value="Peraturan">Peraturan</option>
+                                            <option value="Pedoman">Pedoman</option>
+                                            <option value="Petunjuk Pelaksanaan/Petunjuk Teknis">Petunjuk Pelaksanaan/Petunjuk Teknis</option>
+                                            <option value="Instruksi">Instruksi</option>
+                                            <option value="S.O.P">S.O.P</option>
+                                            <option value="Surat Edaran">Surat Edaran</option>
+                                            <option value="Keputusan">Keputusan</option>
+                                            <option value="Surat Perintah">Surat Perintah</option>
+                                            <option value="Surat Tugas">Surat Tugas</option>
+                                            <option value="Nota Dinas">Nota Dinas</option>
+                                            <option value="Surat Undangan">Surat Undangan</option>
+                                            <option value="Memorandum">Memorandum</option>
+                                            <option value="Surat Dinas">Surat Dinas</option>
+                                            <option value="Perjanjian">Perjanjian</option>
+                                            <option value="Surat Kuasa">Surat Kuasa</option>
+                                            <option value="Berita Acara">Berita Acara</option>
+                                            <option value="Surat Keterangan">Surat Keterangan</option>
+                                            <option value="Surat Pengantar">Surat Pengantar</option>
+                                            <option value="Pengumuman">Pengumuman</option>
+                                            <option value="Sertifikat">Sertifikat</option>
+                                            <option value="Surat Tanda Tamat Pendidikan & Latihan">Surat Tanda Tamat Pendidikan & Latihan</option>
+                                            <option value="Formulir">Formulir</option>
+                                            <option value="Piagam Penghargaan">Piagam Penghargaan</option>
+                                            <option value="Notula">Notula</option>
+                                            <option value="Siaran Pers">Siaran Pers</option>
+                                            <option value="Berita">Berita</option>
+                                            <option value="Plakat">Plakat</option>
+                                            <option value="Perjanjian">Perjanjian</option>
+                                        </select>
                                     </div>
 
                                     <label class="form-label mt-auto">Surat Dari</label>
                                     <div class="input-group">
-                                        <input type="text"  class="form-control" placeholder="Nama Pengirim" name="from" required>
+                                        <input type="text"  class="form-control" placeholder="Nama Pengirim" name="from" required oninvalid="this.setCustomValidity('Nama pengirim tidak boleh kosong!')">
                                     </div>
 
-                                    <label class="form-label mt-auto">Nomor Surat</label>
+                                    <label class="form-label mt-1">Nomor Surat</label>
                                     <div class="input-group">
-                                        <input type="text"  class="form-control" placeholder="Nomor Surat" name="letter_number" required>
+                                        <input type="text"  class="form-control" placeholder="Nomor Surat" name="letter_number" required oninvalid="this.setCustomValidity('Nomor surat tidak boleh kosong!')">
                                     </div>
-                                    <label class="form-label mt-auto">Tgl Surat</label>
-                                    <div class="input-group">
-                                        <input type="date"  class="form-control" name="date" required>
-                                    </div>
+
 
                                 </div>
                                 <div class="col-6">
-                                    <label class="form-label mt-auto">Diterima Tanggal</label>
+                                    <label class="form-label mt-auto">Tgl Surat</label>
                                     <div class="input-group">
-                                        <input type="date"  class="form-control" name="received_date" required>
+                                        <input type="date"  class="form-control" name="date" required oninvalid="this.setCustomValidity('Harap masukkan tanggal surat!')">
                                     </div>
-                                    <label class="form-label mt-auto">Nomor Agenda</label>
+                                    <label class="form-label mt-1">Diterima Tanggal</label>
+                                    <div class="input-group">
+                                        <input type="date"  class="form-control" name="received_date" required oninvalid="this.setCustomValidity('Harap masukkan tanggal diterima!')">
+                                    </div>
+                                    {{-- <label class="form-label mt-auto">Nomor Agenda</label>
                                     <div class="input-group">
                                         <input type="text"  class="form-control" placeholder="Nomor Agenda" name="agenda_number" required>
-                                    </div>
-                                    <label class="form-label mt-auto">Sifat :</label>
+                                    </div> --}}
+                                    <label class="form-label mt-1">Sifat :</label>
                                     <div class="form-check form-check">
                                         <input type="radio" id="sifat1" name="sifat" class="form-check-input"  value="Sangat Segera">
                                         <label class="form-check-label" for="sifat1">Sangat Segera</label>
@@ -73,26 +107,28 @@
                                     <label class="form-label mt-auto">Hal</label>
                                     <div class="form-label-group mb-0">
                                         <textarea data-length="150" class="form-control char-textarea" id="textarea-counter" name="about" rows="3" placeholder="Hal"></textarea>
-                                        <label for="textarea-counter">Hal</label>
                                     </div>
                                     <small class="textarea-counter-value float-right"><span class="char-count">0</span> / 150 </small>
                                 </div>
                             </div>
                             <hr>
-                            <div class="form-group">
-
-                                <input type="file" name="letter_file" class="dropify">
-
-                            </div> --}}
+                            <div class="row">
+                                <div class="col-12">
+                                <div class="input-group">
+                                    <input type="file" name="letter_file" class="dropify" required oninvalid="this.setCustomValidity('Harap masukkan file surat!')">
+                                </div>
+                                <small >Maximal 5MB </small>
+                                </div>
+                            </div>
                             {{-- @endhasrole --}}
 
                             {{-- @hasrole('chief_of_division')
                             <div class="row">
                                 <div class="col-12">
-                                    <label class="form-label mt-auto">Hal</label>
+                                    <label class="form-label mt-auto">Perihal</label>
                                     <div class="form-label-group mb-0">
-                                        <textarea data-length="20" class="form-control char-textarea" id="textarea-counter" name="about" rows="3" placeholder="Hal"></textarea>
-                                        <label for="textarea-counter">Hal</label>
+                                        <textarea data-length="20" class="form-control char-textarea" id="textarea-counter" name="about" rows="3" placeholder="Perihal"></textarea>
+                                        <label for="textarea-counter">Perihal</label>
                                     </div>
                                     <small class="textarea-counter-value float-right"><span class="char-count">0</span> / 20 </small>
                                 </div>
@@ -100,25 +136,35 @@
                             <hr>
 
 
-
-                            @endhasrole --}}
                             <div class="row">
                                 <div class="col-6">
                                     <label class="form-label mt-auto">Diteruskan Kepada sdr :</label>
 
                                     @foreach ($position as $p)
                                     <div class="custom-control custom-control-primary custom-checkbox">
-                                        <input type="checkbox" name="forwarded[{{$loop->index}}]" value="{{$p->id}}" class="custom-control-input" id="{{$p->id}}" >
-                                        <label class="custom-control-label" for="{{$p->id}}">{{$p->p_level}}</label>
+                                        <input type="checkbox" name="forwarded[{{$loop->index}}]" value="{{$p->id}}" class="custom-control-input" id="forwarded[{{$loop->index}}]" >
+                                        <label class="custom-control-label" for="forwarded[{{$loop->index}}]">{{$p->p_level}}</label>
                                     </div>
-                                    @endforeach
-                                 </div>
+                                    @endforeach --}}
+                                    {{-- <div class="custom-control custom-control-primary custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="colorCheck1" >
+                                        <label class="custom-control-label" for="colorCheck1">Kepala Sub. Bagian Keuangan, Kepegawaian dan Umum</label>
+                                    </div>
+                                    <div class="custom-control custom-control-primary custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="colorCheck1" >
+                                        <label class="custom-control-label" for="colorCheck1">Kepala Sub. Bagian Keuangan, Kepegawaian dan Umum</label>
+                                    </div>
+                                    <div class="custom-control custom-control-primary custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="colorCheck1">
+                                        <label class="custom-control-label" for="colorCheck1">Koordinator Subtansi</label>
+                                    </div> --}}
+                                {{-- </div>
                                 <div class="vol-6">
                                     <label class="form-label mt-auto">Mengharapkan :</label>
                                     @foreach ($wish as $w)
                                     <div class="custom-control custom-control-primary custom-checkbox">
-                                        <input type="checkbox" name="wish[{{$loop->index}}]" value="{{$w->id}}" class="custom-control-input wish" id="{{$w->id}}" >
-                                        <label class="custom-control-label" for="{{$w->id}}">{{$w->name}}</label>
+                                        <input type="checkbox" name="wish[{{$loop->index}}]" value="{{$w->id}}" class="custom-control-input wish" id="wish[{{$loop->index}}]" >
+                                        <label class="custom-control-label" for="wish[{{$loop->index}}]">{{$w->name}}</label>
                                     </div>
                                     @endforeach
                                     <div class="custom-control custom-control-primary custom-checkbox mb-1" >
@@ -128,30 +174,18 @@
 
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
+                            @endhasrole --}}
 
                             {{-- <hr> --}}
                             <div class="row mt-1">
-
-                                {{-- <div class="custom-control custom-control-primary custom-checkbox mb-1" >
-                                    <input type="checkbox" name="acc" class="custom-control-input" value="Disetujui" id="acc" >
-                                    <label class="custom-control-label" for="acc">Acc</label>
-
-                                </div> --}}
-                                <div class="col-12">
-                                    <label class="form-label mt-auto">Catatan</label>
-                                        <div class="form-label-group mb-0">
-                                            <textarea class="form-control char-textarea" name="notes" id="textarea-counter" rows="3" placeholder="Catatan"></textarea>
-                                        </div>
-                                        <hr>
-
-                               </div>
                                 {{-- <div class="col-6">
-                                    <label class="form-label mt-auto">Hal</label>
+                                    <label class="form-label mt-auto">Perihal</label>
                                     <div class="form-label-group mb-0">
-                                        <textarea data-length="20" class="form-control char-textarea" id="textarea-counter" rows="3" placeholder="Hal"></textarea>
-                                        <label for="textarea-counter">Hal</label>
+                                        <textarea data-length="20" class="form-control char-textarea" id="textarea-counter" rows="3" placeholder="Perihal"></textarea>
+                                        <label for="textarea-counter">Perihal</label>
                                     </div>
                                     <small class="textarea-counter-value float-right"><span class="char-count">0</span> / 20 </small>
                                 </div>
@@ -223,7 +257,6 @@
                    </h5>
                     </div>
 
-
                     <table style="border: solid 1px black;" >
                         <tr style="border: solid 1px black;">
                             <td style="border: solid 1px black; width: 550px; padding:10px;" rowspan="4">
@@ -268,12 +301,12 @@
                                     <input type="radio" id="sifat4" name="sifat" class="form-check-input" value="Biasa">
                                     <label class="form-check-label" for="sifat4">Biasa</label>
                                   </div>
-
+                                </div>
                             </td>
                         </tr>
                         <tr>
                            <td colspan="4" style="padding:10px;">
-                               Hal :
+                               Perihal :
                            </td>
                         </tr>
                         <tr>
@@ -333,7 +366,7 @@
                         </tr>
                     </table>
 
-                    <div class="row mt-1" id="files">
+                    <div class="row justify-content-center mt-1" id="files">
 
 
                     </div>

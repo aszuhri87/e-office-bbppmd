@@ -66,9 +66,9 @@
                                             <th>#</th>
                                             <th>Nama</th>
                                             <th>Dari</th>
+                                            <th>Tanggal</th>
                                             <th>Nomor Surat</th>
                                             <th>Diproses Oleh </th>
-                                            <th>Tanggal</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>

@@ -29,7 +29,7 @@
                          <img src="{{asset('/logo.png')}}" alt="" style="width:90%; height:75%; padding-left:10%" >
                     </span>
                         {{-- <img src="{{asset('app-assets/images/logo.png')}}" alt="" style="width:auto; height:80%" > --}}
-                    <h2 class="brand-text text-bppm">SPS BBPPM</h2>
+                    <h2 class="brand-text text-bppm">SITA SUTRO BBPPM</h2>
                 </a></li>
             <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse" id="side-toggle"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
         </ul>
@@ -57,9 +57,11 @@
                 </ul>
             </li>
 
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/letter"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lembar Disposisi</span></a>
+            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/input-letter"><i data-feather="file-plus"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Input Surat</span></a>
             </li>
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Verifikasi</span></a>
+            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/letter"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
+            </li>
+            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
             </li>
             {{-- <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/done"><i data-feather="check-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Selesai</span></a>
             </li> --}}
@@ -71,9 +73,9 @@
             {{-- @endhasrole --}}
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps</span><i data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief/letter-chief"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lembar Disposisi</span></a>
+            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief/letter-chief"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
             </li>
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Verifikasi</span></a>
+            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
             </li>
             {{-- <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief/done"><i data-feather="check-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Selesai</span></a>
             </li> --}}
@@ -85,9 +87,9 @@
             {{-- @endhasrole --}}
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps</span><i data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief_div/letter-chief_div"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Lembar Disposisi</span></a>
+            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief_div/letter-chief_div"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
             </li>
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief_div/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Verifikasi</span></a>
+            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief_div/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
             </li>
             {{-- <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief_div/done"><i data-feather="check-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Selesai</span></a>
             </li> --}}

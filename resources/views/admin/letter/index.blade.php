@@ -54,7 +54,6 @@
                     <div class="col-12">
                         <div class="card table-responsive">
                             <div class="card-header border-bottom">
-                                <button type="button" class="btn btn-bppm" id="create-letter-modal" style="border-radius: 65px;">Buat</button>
                                 <div class="form-row">
                                     <input type="text" id="search" class="form-control mr-1" placeholder="Pencarian" style="border-radius: 65px;"">
                                 </div>
@@ -64,11 +63,11 @@
                                     <thead class="" width="100%">
                                         <tr>
                                             <th>#</th>
-                                            <th>Nama</th>
+                                            <th>Jenis Naskah</th>
                                             <th>Dari</th>
+                                            <th>Tanggal</th>
                                             <th>Nomor Surat</th>
                                             <th>Diproses Oleh </th>
-                                            <th>Tanggal</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>

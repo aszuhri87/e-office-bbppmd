@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DoneController;
+use App\Http\Controllers\Admin\InputLetterController;
 use App\Http\Controllers\Admin\LetterController;
 use App\Http\Controllers\Admin\PositionController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -60,6 +61,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin|superadmin']], f
     Route::put('/done/edit/{id}', [DoneController::class, 'update']);
     Route::get('/done/edit/{id}', [DoneController::class, 'show']);
     Route::resource('/done', 'Admin\DoneController');
+
+    Route::post('/input-letter', [LetterController::class, 'store']);
+    Route::get('/input-letter', [InputLetterController::class, 'index']);
 
     // Route::resource('/sub-unit', SubUnitController::class);
     // Route::resource('/document-category', DocumentCategoryController::class);

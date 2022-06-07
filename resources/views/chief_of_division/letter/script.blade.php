@@ -182,6 +182,52 @@
                     }
                 })
             });
+
+            $('#btn-save').click(function() {
+                $.blockUI({
+                    message:
+                    '<div class="d-flex justify-content-center align-items-center"><p class="mr-50 mb-0">Mohon Tunggu...</p> <div class="spinner-grow spinner-grow-sm text-white" role="status"></div> </div>',
+                    css: {
+                    backgroundColor: 'transparent',
+                    color: '#fff',
+                    border: '0'
+                    },
+                    overlayCSS: {
+                    opacity: 0.5
+                    },
+                    timeout: 1000,
+                    onUnblock: function () {
+                    $.blockUI({
+                        message: '<p class="mb-0">Hampir Selesai...</p>',
+                        timeout: 1000,
+                        css: {
+                        backgroundColor: 'transparent',
+                        color: '#fff',
+                        border: '0'
+                        },
+                        overlayCSS: {
+                        opacity: 0.5
+                        },
+                        onUnblock: function () {
+                        $.blockUI({
+                            message: '<div class="p-1 bg-success">Selesai!</div>',
+                            timeout: 500,
+                            css: {
+                            backgroundColor: 'transparent',
+                            color: '#fff',
+                            border: '0'
+                            },
+                            overlayCSS: {
+                            opacity: 0.5
+                            }
+                        });
+                        }
+                    });
+                    }
+                });
+
+                // setTimeout($.unblockUI, 2100);
+            });
         },
         formSubmit = () => {
             $('#form-letter-create').submit(function(event){

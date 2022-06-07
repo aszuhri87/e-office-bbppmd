@@ -194,6 +194,18 @@
                 event.preventDefault();
                 var formData = new FormData(this);
 
+                $.blockUI({ css: {
+                    border: 'none',
+                    padding: '15px',
+                    backgroundColor: '#000',
+                    '-webkit-border-radius': '10px',
+                    '-moz-border-radius': '10px',
+                    opacity: .5,
+                    color: '#fff'
+                } });
+
+                setTimeout($.unblockUI, 2000);
+
                 $.ajax({
                     url: $(this).attr('action'),
                     type: $(this).attr('method'),
@@ -213,6 +225,7 @@
                     toastr.error(res.responseJSON.message, 'Gagal')
                 })
                 .always(function() { });
+
             });
         }
     }();

@@ -27,11 +27,11 @@ class VerificationStatusController extends Controller
         $letter_user = LetterUser::select(
             [
                 'letter_users.*', 'letter_users.user_id', 'positions.id as position_id',
-                DB::raw("
-                CASE
-                WHEN positions.level='Admin' OR positions.level='Super Admin' THEN positions.level
-                ELSE CONCAT(positions.level,' ', positions.name)
-                END as p_level"),
+                DB::raw("CASE
+                WHEN positions.level='Admin' OR positions.level='Super Admin'
+                THEN positions.level
+                ELSE CONCAT(positions.level,' ', positions.name,' - ', to_char(letter_users.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:MM:ss'))
+                 END as p_level"),
             ],
             )
             ->join('users', 'users.id', 'letter_users.user_id')
@@ -90,7 +90,11 @@ class VerificationStatusController extends Controller
                     'letter_users.*',
                     'letter_users.user_id',
                     'positions.id as position_id',
-                    DB::raw("CONCAT(positions.level,' ', positions.name) as p_level"),
+                    DB::raw("CASE
+                    WHEN positions.level='Admin' OR positions.level='Super Admin'
+                    THEN CONCAT(positions.level,' pada ', to_char(letter_users.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi'))
+                    ELSE CONCAT(positions.level,' ', positions.name,' pada ', to_char(letter_users.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi'))
+                     END as p_level"),
                     DB::raw("
                     CASE
                     WHEN letter_users.notes IS NOT NULL

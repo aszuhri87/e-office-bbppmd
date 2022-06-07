@@ -57,7 +57,8 @@
                         <div class="w-100 text-center">
                             <img src="{{asset('logo.png')}}" alt="" style="width:15%; height:15%" >
                             <br>
-                            <h2 class="brand-text mt-2 ml-1">Sistem Informasi Lembar Disposisi Surat</h2>
+                            <h2 class="brand-text mt-2 ml-1">SITA SUTRO</h2>
+                            <h3>  Sistem Tata Pengelolaan Persuratan Secara Elektronik</h3> <hr>
                             <h4 class="mb-1 ">BALAI BESAR PELATIHAN DAN PEMBERDAYAAN MASYARAKAT DESA, DAERAH TERTINGGAL DAN TRANSMIGRASI YOGYAKARTA</h4>
                             {{-- <p class="">Masuk atau daftar!</p> --}}
                             <hr>

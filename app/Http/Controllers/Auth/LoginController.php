@@ -48,7 +48,7 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         $user_dt = $user->with('roles')->where('username', $request->username)->first();
-        if ($user->hasRole('admin')) {
+        if ($user->hasRole('admin') || $user->hasRole('superadmin')) {
             Alert::toast('Selamat Datang, '.$user_dt->name.'!', 'success');
 
             return redirect('admin/dashboard');

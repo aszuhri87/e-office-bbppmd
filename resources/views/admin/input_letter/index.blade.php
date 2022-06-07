@@ -54,10 +54,8 @@
                     <div class="col-12">
                         <div class="card table-responsive">
                             <div class="card-header border-bottom">
-                                {{-- <button type="button" class="btn btn-bppm" id="create-letter-modal" style="border-radius: 65px;">Buat</button> --}}
-                                <div class="form-row">
-                                    <input type="text" id="search" class="form-control mr-1" placeholder="Pencarian" style="border-radius: 65px;"">
-                                </div>
+                                <button type="button" class="btn btn-bppm" id="create-letter-modal" style="border-radius: 65px;">Buat</button>
+
                             </div>
                             <div class="card-datatable">
                                 <table class="table" id="init-table">
@@ -72,7 +70,7 @@
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody >
+                                    <tbody>
 
                                     </tbody>
                                 </table>
@@ -90,10 +88,10 @@
 </div>
 <!-- END: Content-->
 
-@include('chief_of_division.letter.modal')
+@include('admin.input_letter.modal')
 @endsection
 
 @push('script')
-    @include('chief_of_division.letter.script')
-    @include('chief_of_division.letter.script-table')
+    @include('admin.input_letter.script')
+    @include('admin.input_letter.script-table')
 @endpush

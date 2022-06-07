@@ -1,10 +1,17 @@
 <script type="text/javascript">
 
     var Page = function() {
-        $(document).ajaxStop($.unblockUI);
         $(document).ready(function() {
             formSubmit();
             initAction();
+
+            function printErrorMsg (msg) {
+            $(".print-error-msg").find("ul").html('');
+            $(".print-error-msg").css('display','block');
+            $.each( msg, function( key, value ) {
+                $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+            });
+        }
         });
 
         const initAction = () => {
@@ -13,7 +20,7 @@
 
                 // var id_req = $(this).find('option:selected').val();
                 $('#form-letter-create').trigger("reset");
-                $('#form-letter-create').attr('action','{{url('chief/letter-chief')}}');
+                $('#form-letter-create').attr('action','{{url('admin/letter')}}');
                 $('#form-letter-create').attr('method','POST');
                 $('#form-letter-create').attr('enctype','multipart/form-data');
 
@@ -58,6 +65,7 @@
 
 
                 $('div#catatan').html("");
+                $('div#files').html("");
 
                 $.get(url, function(data){
 
@@ -79,27 +87,35 @@
                         for(i in data.letter_user){
                             $('#d-'+data.letter_user[i].position_id).val(data.letter_user[i].position_id).prop('checked', true).attr("disabled", true);
 
-                        if (data.letter_user[i].note != null){
-                            $('div#catatan').append(`
-                                <p>`+data.letter_user[i].note+`</p>
-                            `);
+
+                            if (data.letter_user[i].note != null){
+                                $('div#catatan').append(`
+                                    <p>`+data.letter_user[i].note+`</p>
+                                `);
+                            }
                         }
 
-
-                        }
                         $('div#files').append(`
-                            <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="100%" height="600">
-                            </embed></p>
-                        `);
+
+                        <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="50%" height="600">
+                        </embed></p>
+                            `);
+
+
 
                         showModal('modal-document');
 
                 });
 
-                $(document).on('hide.bs.modal','#modal-document', function(event){
-                    $('input[type="checkbox"]').prop('checked',false);
-                });
             });
+
+            $(document).on('hide.bs.modal','#modal-document', function(event){
+                $('input[type="radio"]').prop('checked',false).attr('disabled', false);
+                $('input[type="text"]').prop('disabled', false);
+                $('textarea').prop('disabled', false);
+                $('input[type="date"]').prop('disabled', false);
+            });
+
 
             $(document).on('click', '.btn-edit', function(event){
                 event.preventDefault();
@@ -109,37 +125,41 @@
                 $('#form-letter-create').trigger("reset");
                 $('#form-letter-create').attr('action', $(this).attr('href'));
                 $('#form-letter-create').attr('method','PUT');
-                // $('#form-letter-create').attr('enctype','multipart/form-data');
-
-
 
                 $.get(url, function(data){
-                        // $('#form-letter-create').find('input[name="name"]').val(data.name);
-                        // $('#form-letter-create').find('input[name="from"]').val(data.from);
-                        // $('#form-letter-create').find('input[name="letter_number"]').val(data.letter_number);
-                        // $('#form-letter-create').find('input[name="date"]').val(data.date);
-                        // $('#form-letter-create').find('input[name="agenda_number"]').val(data.agenda_number);
-                        // $('#form-letter-create').find('input[name="received_date"]').val(data.received_date);
-                        // $('#form-letter-create').find('input[name="sifat"][value="'+data.trait+'"]').prop('checked', true);
-                        // $('#form-letter-create').find('textarea[name="about"]').val(data.about);
+                        $('#form-letter-create').find('input[name="name"]').val(data.name);
+                        $('#form-letter-create').find('input[name="from"]').val(data.from);
+                        $('#form-letter-create').find('input[name="letter_number"]').val(data.letter_number);
+                        $('#form-letter-create').find('input[name="date"]').val(data.date);
+                        $('#form-letter-create').find('input[name="agenda_number"]').val(data.agenda_number);
+                        $('#form-letter-create').find('input[name="received_date"]').val(data.received_date);
+                        $('#form-letter-create').find('input[name="sifat"][value="'+data.trait+'"]').prop('checked', true);
+                        $('#form-letter-create').find('textarea[name="about"]').val(data.about);
 
-                        for(i in data.unit_letter){
-                            // $('input[name="wish['+i+']"][value="'+data.unit_letter[i]?.wish_id+'"]').prop('checked', true);
-                            $('#'+data.unit_letter[i]?.wish_id).val(data.unit_letter[i]?.wish_id).prop('checked', true).attr("disabled", true);
-                            // console.log(data.unit_letter[i]?.wish_id);
-                        }
+                        // for(i in data.letter_user){
 
+                        //     $('input[name="forwarded['+i+']"][value="'+data.letter_user[i].position_id+'"]').prop('checked', true);
+                        // }
 
-                        for(i in data.letter_user){
+                        // for(i in data.unit_letter){
+                        //     $('input[name="wish['+i+']"][value="'+data.unit_letter[i].wishes_id+'"]').prop('checked', true);
+                        // }
 
-                            $('#'+data.letter_user[i]?.position_id).val(data.letter_user[i]?.position_id).prop('checked', true).attr("disabled", true);
-                        }
+                        $('.dropify').dropify();
 
-                        $(document).on('click','#lain', function(event){
-                            $('.input-lain').html(`
-                                <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">
-                            `);
-                        });
+                        // for(i=0;i<9;i++){
+
+                        //     $('#form-letter-create').find('input[name="from"]').val(data[i].from);
+                        //     $('#form-letter-create').find('input[name="letter_number"]').val(data[i].letter_number);
+                        //     $('#form-letter-create').find('input[name="date"]').val(data[i].date);
+                        //     $('#form-letter-create').find('input[name="agenda_number"]').val(data[i].agenda_number);
+                        //     $('#form-letter-create').find('input[name="received_date"]').val(data[i].received_date);
+                        //     $('#form-letter-create').find('textarea[name="about"]').val(data[i].about);
+                        //     $('#form-letter-create').find('input[name="sifat"][value="'+data[i].trait+'"]').prop('checked', true);
+                        //     $('#form-letter-create').find('textarea[name="about"]').val(data[i].about);
+                        //     $('#form-letter-create').find('input[name="wish['+i+']"][value="'+data[i].unit_letter[i][wishes_id]+'"]').prop('checked', true);
+                        //     $('#form-letter-create').find('input[name="forwarded['+i+']"][value="'+data[i].letter_user[i][position_id]+'"]').prop('checked', true);
+                        //     }
 
                         showModal('modal-letter');
 
@@ -190,34 +210,6 @@
                     opacity: 0.5
                     },
                     timeout: 1000,
-                    onUnblock: function () {
-                    $.blockUI({
-                        message: '<p class="mb-0">Hampir Selesai...</p>',
-                        timeout: 1000,
-                        css: {
-                        backgroundColor: 'transparent',
-                        color: '#fff',
-                        border: '0'
-                        },
-                        overlayCSS: {
-                        opacity: 0.5
-                        },
-                        onUnblock: function () {
-                        $.blockUI({
-                            message: '<div class="p-1 bg-success">Selesai!</div>',
-                            timeout: 500,
-                            css: {
-                            backgroundColor: 'transparent',
-                            color: '#fff',
-                            border: '0'
-                            },
-                            overlayCSS: {
-                            opacity: 0.5
-                            }
-                        });
-                        }
-                    });
-                    }
                 });
 
                 // setTimeout($.unblockUI, 2100);
@@ -228,22 +220,20 @@
                 event.preventDefault();
                 var formData = new FormData(this);
 
-
                 $.ajax({
                     url: $(this).attr('action'),
                     type: $(this).attr('method'),
-                    data: $(this).serialize(),
-                    // data: new FormData(this),
-                    // contentType: false,
-                    // cache: false,
-                    // processData: false,
+                    // data: $(this).serialize(),
+                    data: new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
 
                 })
                 .done(function(res, xhr, meta) {
                     toastr.success(res.message, 'Success')
                     LetterTable.table().draw(false);
                     hideModal('modal-letter');
-                    $.unblockUI();
                 })
                 .fail(function(res, error) {
                     toastr.error(res.responseJSON.message, 'Gagal')

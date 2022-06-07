@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
+use Mail;
 use Yajra\DataTables\Facades\DataTables;
 
 class LetterController extends ApiController
@@ -66,7 +67,7 @@ class LetterController extends ApiController
         $data = Letter::select([
             'letters.*',
             'letters.id',
-            // 'letter_unit.wishes_id',
+            DB::raw("to_char(letters.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi' ) as tanggal"),
             // 'letter_user.position_id',
             // 'letter_user.p_level',
         ])
@@ -87,7 +88,11 @@ class LetterController extends ApiController
                     'letter_users.*',
                     'letter_users.user_id',
                     'positions.id as position_id',
-                    DB::raw("CONCAT(positions.level,' ', positions.name) as p_level"),
+                    DB::raw("CASE
+                    WHEN positions.level='Admin' OR positions.level='Super Admin'
+                    THEN CONCAT(positions.level,' pada ', to_char(letter_users.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi'))
+                    ELSE CONCAT(positions.level,' ', positions.name,' pada ', to_char(letter_users.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi'))
+                     END as p_level"),
                     DB::raw("
                     CASE
                     WHEN letter_users.notes IS NOT NULL
@@ -351,6 +356,20 @@ class LetterController extends ApiController
                                     'letter_id' => $id,
                                     'letter_user_id' => $letter_user->id,
                                 ]);
+
+                            $user = User::where('id', $p->user_id)->first();
+                            $user_now = User::where('id', Auth::id())->first();
+
+                            Mail::send('email', [
+                                'name' => $user->name,
+                                'email' => $user->email,
+                                'from' => $user_now->name,
+                                'greet' => 'Permisi,', ],
+                                function ($message) use ($user) {
+                                    $message->from('achmad.s.zuhri182@gmail.com', 'BBPPM');
+                                    $message->to($user->email, $user->name)
+                                        ->subject('Notifikasi disposisi');
+                                });
                         }
                     }
 
