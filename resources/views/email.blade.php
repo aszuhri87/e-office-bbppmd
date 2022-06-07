@@ -121,7 +121,7 @@ a:hover, a:active {
 
                           <tr>
                             <td style="mso-padding-alt: 16px 24px; --bg-opacity: 1;">
-                              <a href="http://e-office.bbppm.var-x.id//login"  style="display: block; font-weight: 600; font-size: 14px; line-height: 100%; padding: 16px 24px; ">Menuju Aplikasi Sekarang &rarr;</a>
+                              <a href="http://e-office.bbppm.var-x.id/login"  style="display: block; font-weight: 600; font-size: 14px; line-height: 100%; padding: 16px 24px; ">Menuju Aplikasi Sekarang &rarr;</a>
                             </td>
                           </tr>
                         </table>
