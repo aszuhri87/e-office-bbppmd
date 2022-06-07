@@ -155,6 +155,12 @@ class LetterController extends ApiController
             $result = DB::transaction(function () use ($request) {
                 $agenda = Letter::orderBy('created_at', 'DESC')->first();
 
+                if ($agenda == null) {
+                    $agen = 1;
+                } elseif ($agenda != null) {
+                    $agen = $agenda->agenda_number + 1;
+                }
+
                 if ($request->hasFile('letter_file')) {
                     $file = $request->file('letter_file');
                     $name = date('Y-m-d_s').'_'.$file->getClientOriginalName();
@@ -168,7 +174,7 @@ class LetterController extends ApiController
                         'letter_number' => $request->letter_number,
                         'date' => $request->date,
                         'received_date' => $request->received_date,
-                        'agenda_number' => $agenda->agenda_number + 1,
+                        'agenda_number' => $agen,
                         'trait' => $request->sifat,
                         'about' => $request->about,
                         // 'signature' => $request->signature,
