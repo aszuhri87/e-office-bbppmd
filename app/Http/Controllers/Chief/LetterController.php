@@ -316,7 +316,7 @@ class LetterController extends ApiController
         ->distinct('letter_file')
         ->where('letters.id', $id)
         ->whereNull('letters.deleted_at')
-        ->groupBy(['letters.id'])
+        ->groupBy('letters.id')
         ->first();
         // dd(count($data->unit_letter));
 
