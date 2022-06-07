@@ -308,6 +308,7 @@ class LetterController extends ApiController
         //     $join->on('letter_unit.letter_id', 'letters.id');
         // })
         // ->leftJoin('wishes', 'wishes.id', 'letter_wishes.wish_id')
+        ->distinct('letter_file')
         ->where('letters.id', $id)
         ->whereNull('letters.deleted_at')
         ->groupBy(['letters.id'])
