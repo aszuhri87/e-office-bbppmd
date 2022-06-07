@@ -155,7 +155,7 @@ class LetterController extends ApiController
         try {
             $result = DB::transaction(function () use ($request) {
                 $user = Position::where('level', 'Kepala')->first();
-                $user_now = User::where('id', $user->id)->first();
+                $user_now = User::where('id', $user->user_id)->first();
 
                 Mail::send('email', [
                     'name' => $user_now->name,
