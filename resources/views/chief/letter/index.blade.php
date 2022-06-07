@@ -11,12 +11,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Buat Lembar Disposisi</h2>
+                        <h2 class="content-header-title float-left mb-0">Disposisi Surat</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a>
+                                <li class="breadcrumb-item">Home
                                 </li>
-                                <li class="breadcrumb-item">Buat Lembar Disposisi
+                                <li class="breadcrumb-item">Disposisi Surat
                                 </li>
                             </ol>
                         </div>
