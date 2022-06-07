@@ -63,7 +63,7 @@
 
                                 <h2 class="brand-text text-bppm ml-1">SITA SUTRO | BBPPM Yogyakarta</h2>
                                 <br>
-                                <h4 class="card-title mb-1">Selamat datang di Sistem Tata Pengelolaan Persuratan Persuratan Secaaa Elektronik BBPPM 👋</h4>
+                                <h4 class="card-title mb-1">Selamat datang di Sistem Tata Pengelolaan Persuratan Persuratan Secara Elektronik BBPPM 👋</h4>
                                 <p class="card-text mb-2">Silahkan login untuk melanjutkan</p>
 
                                 <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">
