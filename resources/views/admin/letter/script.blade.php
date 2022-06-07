@@ -89,7 +89,7 @@
 
                         $('div#files').append(`
 
-                        <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="100%" height="600">
+                        <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="600px" height="600">
                         </embed></p>
                             `);
 
