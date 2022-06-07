@@ -52,6 +52,8 @@ class LetterController extends ApiController
 
     public function dt()
     {
+        date_default_timezone_set('Asia/Jakarta');
+
         $user = User::where('id', Auth::id())->first();
 
         $user->with('roles')->where('id', Auth::id())->first();
@@ -150,6 +152,8 @@ class LetterController extends ApiController
     public function store(Request $request)
     {
         try {
+            date_default_timezone_set('Asia/Jakarta');
+
             $result = DB::transaction(function () use ($request) {
                 if ($request->hasFile('letter_file')) {
                     $file = $request->file('letter_file');
@@ -232,6 +236,7 @@ class LetterController extends ApiController
 
     public function show($id)
     {
+        date_default_timezone_set('Asia/Jakarta');
         // $doc_category_req = DocumentCategoryRequirement::select([
         //     'requirement_types.data_type as data_type',
         //     'requirement_types.description as title', 'document_category_requirements.*',
@@ -328,6 +333,7 @@ class LetterController extends ApiController
     public function update(Request $request, $id)
     {
         try {
+            date_default_timezone_set('Asia/Jakarta');
             $result = DB::transaction(function () use ($request,$id) {
                 $user = User::where('id', Auth::id())->first();
 

@@ -50,6 +50,8 @@ class LetterController extends ApiController
 
     public function dt()
     {
+        date_default_timezone_set('Asia/Jakarta');
+
         $user = User::where('id', Auth::id())->first();
 
         $user->with('roles')->where('id', Auth::id())->first();
@@ -153,6 +155,8 @@ class LetterController extends ApiController
     public function store(Request $request)
     {
         try {
+            date_default_timezone_set('Asia/Jakarta');
+
             $result = DB::transaction(function () use ($request) {
                 $user = Position::where('level', 'Kepala')->first();
                 $user_now = User::where('id', $user->user_id)->first();
@@ -224,6 +228,8 @@ class LetterController extends ApiController
         // ])
         // ->leftJoin('requirement_types', 'requirement_types.requirement_type', 'document_category_requirements.requirement_type')
         // ->whereNull(['document_category_requirements.deleted_at', 'requirement_types.deleted_at']);
+
+        date_default_timezone_set('Asia/Jakarta');
 
         $letter_unit = UnitLetter::select(
             ['unit_letters.*', 'letter_wishes.unit_letter_id', 'letter_wishes.*', 'letter_wishes.wish_id', 'wishes.id as wishes_id', 'wishes.name as wish_name']

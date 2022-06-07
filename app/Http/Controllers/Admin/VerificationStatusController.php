@@ -66,6 +66,7 @@ class VerificationStatusController extends Controller
 
     public function show($id)
     {
+        date_default_timezone_set('Asia/Jakarta');
         $data = Letter::select([
             'letters.*',
             'letters.id',
