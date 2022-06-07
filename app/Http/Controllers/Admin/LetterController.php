@@ -162,9 +162,9 @@ class LetterController extends ApiController
                     'email' => $user_now->email,
                     'from' => $user_now->name,
                     'greet' => 'Permisi,', ],
-                    function ($message) use ($user) {
+                    function ($message) use ($user_now) {
                         $message->from('achmad.s.zuhri182@gmail.com', 'SITA SUTRO BBPPM');
-                        $message->to($user->email, $user->name)
+                        $message->to($user_now->email, $user_now->name)
                             ->subject('Notifikasi disposisi');
                     });
 
