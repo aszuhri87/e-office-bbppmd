@@ -61,9 +61,9 @@
                                     <img src="{{asset('/logo.png')}}" alt="" style="width:80px%; height:80px" >
                                 </a>
 
-                                <h2 class="brand-text text-bppm ml-1">SPS | BBPPM Yogyakarta</h2>
+                                <h2 class="brand-text text-bppm ml-1">SITA SUTRO | BBPPM Yogyakarta</h2>
                                 <br>
-                                <h4 class="card-title mb-1">Selamat datang di Sistem Pelayanan Surat BBPPM 👋</h4>
+                                <h4 class="card-title mb-1">Selamat datang di Sistem Tata Pengelolaan Persuratan Persuratan Secaaa Elektronik BBPPM 👋</h4>
                                 <p class="card-text mb-2">Silahkan login untuk melanjutkan</p>
 
                                 <form class="auth-login-form mt-2" method="POST" action="{{ route('login') }}">

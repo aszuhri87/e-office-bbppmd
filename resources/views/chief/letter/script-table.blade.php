@@ -59,7 +59,7 @@
                                     </span>
                                 </a>
 
-                                <a href="{{ url('/chief/letter-chief') }}/${data}" title="Edit" class="btn btn-light btn-edit btn-sm btn-clean btn-icon" data-toggle="tooltip">
+                                <a href="{{ url('/chief/letter-chief') }}/${data}" title="Disposisi" class="btn btn-light btn-edit btn-sm btn-clean btn-icon" data-toggle="tooltip">
                                         <span class="svg-icon svg-icon-md">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#47d147" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path>
