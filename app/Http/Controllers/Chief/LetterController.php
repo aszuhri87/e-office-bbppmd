@@ -373,18 +373,17 @@ class LetterController extends ApiController
 
                             $user = User::where('id', $p->user_id)->first();
                             $user_now = User::where('id', Auth::id())->first();
-
-                            Mail::send('email', [
-                                'name' => $user->name,
-                                'email' => $user->email,
-                                'from' => $user_now->name,
-                                'greet' => 'Permisi,', ],
-                                function ($message) use ($user) {
-                                    $message->from('achmad.s.zuhri182@gmail.com', 'SITA SUTRO BBPPM');
-                                    $message->to($user->email, $user->name)
-                                        ->subject('Notifikasi disposisi');
-                                });
                         }
+                        Mail::send('email', [
+                            'name' => $user->name,
+                            'email' => $user->email,
+                            'from' => $user_now->name,
+                            'greet' => 'Permisi,', ],
+                            function ($message) use ($user) {
+                                $message->from('achmad.s.zuhri182@gmail.com', 'SITA SUTRO BBPPM');
+                                $message->to($user->email, $user->name)
+                                    ->subject('Notifikasi disposisi');
+                            });
                     }
 
                     foreach ($request->input('wish') as $w) {
