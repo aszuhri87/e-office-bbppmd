@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Chief;
 
 use App\Http\Controllers\ApiController;
 use App\Models\Letter;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends ApiController
@@ -14,7 +13,6 @@ class DashboardController extends ApiController
         $chart = Letter::select(DB::raw('count(letters.id) as count'), DB::raw("to_char(letters.created_at, 'FMMonth') as month_name"))
         ->join('letter_users', 'letter_users.letter_id', 'letters.id')
         ->where('letters.id', '!=', null)
-        ->where('letter_users.user_id', Auth::id())
         ->whereYear('letters.created_at', date('Y'))
         ->groupBy('month_name')
         ->get();
