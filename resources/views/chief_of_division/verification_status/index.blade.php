@@ -27,7 +27,7 @@
             <div class="content-body">
                 <!-- Timeline Starts -->
 
-                        <div class="col-12">
+            <div class="col-12">
                                                         <!-- Bootstrap Select start -->
                     <section class="bootstrap-select">
                         <div class="row">
@@ -41,7 +41,7 @@
                                         <div class="form-group">
                                             <!-- Remote Data -->
                                         <div class="col-12 mb-1">
-                                            <label>Remote Data</label>
+
                                             <div class="form-group">
                                                 <select class=" form-control" id="select-letter" data-toggle="collapse" data-target="#timeline"></select>
                                             </div>

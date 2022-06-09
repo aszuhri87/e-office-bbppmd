@@ -41,7 +41,6 @@
                                         <div class="form-group">
                                             <!-- Remote Data -->
                                         <div class="col-12 mb-1">
-                                            <label>Remote Data</label>
                                             <div class="form-group">
                                                 <select class=" form-control" id="select-letter" data-toggle="collapse" data-target="#timeline"></select>
                                             </div>

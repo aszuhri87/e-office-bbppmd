@@ -6,9 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Models\Letter;
 use App\Models\LetterUser;
 use App\Models\Position;
-use App\Models\UnitLetter;
 use App\Models\User;
-use App\Models\Wish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -56,20 +54,10 @@ class LetterController extends ApiController
 
         $user->with('roles')->where('id', Auth::id())->first();
 
-        // if ($user->hasRole('admin') || $user->hasRole('superadmin')) {
-        //     $letter_user->where('positions.level', '!=', 'Admin')
-        //     ->where('positions.level', '!=', 'Super Admin');
-        // }
-
-        // dd($letter_wish->get());
-
         $data = Letter::select([
             'letters.*',
             'letters.id',
             DB::raw("to_char(letters.created_at , 'dd FMMonthFM YYYY HH24:mi' ) as tanggal"),
-            // 'letter_unit.wishes_id',
-            // 'letter_user.position_id',
-            // 'letter_user.p_level',
         ])
         ->with(['unit_letter' => function ($query) {
             $query->select(
@@ -222,40 +210,7 @@ class LetterController extends ApiController
 
     public function show($id)
     {
-        // $doc_category_req = DocumentCategoryRequirement::select([
-        //     'requirement_types.data_type as data_type',
-        //     'requirement_types.description as title', 'document_category_requirements.*',
-        // ])
-        // ->leftJoin('requirement_types', 'requirement_types.requirement_type', 'document_category_requirements.requirement_type')
-        // ->whereNull(['document_category_requirements.deleted_at', 'requirement_types.deleted_at']);
-
         date_default_timezone_set('Asia/Jakarta');
-
-        $letter_unit = UnitLetter::select(
-            ['unit_letters.*', 'letter_wishes.unit_letter_id', 'letter_wishes.*', 'letter_wishes.wish_id', 'wishes.id as wishes_id', 'wishes.name as wish_name']
-            )
-
-            ->join('letter_wishes', 'letter_wishes.unit_letter_id', 'unit_letters.id')
-            ->leftJoin('wishes', 'wishes.id', 'letter_wishes.wish_id')
-            ->where('unit_letters.letter_id', $id)
-            ->whereNull('unit_letters.deleted_at');
-        // ->first();
-
-        $letter_user = LetterUser::select(
-            ['letter_users.*', 'letter_users.user_id', 'positions.id as position_id', DB::raw("CONCAT(positions.level,' ', positions.name) as p_level"),
-            DB::raw("
-            CASE
-            WHEN letter_users.notes IS NOT NULL
-            THEN CONCAT(letter_users.notes,' - ',positions.level,' ', positions.name)
-            END as note"), ],
-            )
-            ->join('users', 'users.id', 'letter_users.user_id')
-            ->leftJoin('positions', 'positions.user_id', 'users.id')
-            ->where('letter_users.letter_id', $id)
-            ->whereNull(['letter_users.deleted_at', 'users.deleted_at', 'positions.deleted_at'])
-            ->groupBy(['letter_users.id', 'positions.id', 'users.id']);
-
-        // dd($letter_wish->get());
 
         $data = Letter::select([
             'letters.*',
@@ -265,11 +220,6 @@ class LetterController extends ApiController
             // 'letter_user.p_level',
         ])
 
-        // ->join('letter_users', 'letter_users.letter_id', 'letters.id')
-        // ->leftJoin('users', 'users.id', 'letter_users.user_id')
-        // ->leftJoin('positions', 'positions.user_id', 'users.id')
-        // ->join('unit_letters', 'unit_letters.letter_id', 'letters.id')
-        // ->leftJoinSub('letter_wishes', 'letter_wishes.unit_letter_id', 'unit_letters.id')
         ->with(['unit_letter' => function ($query) {
             $query->select(
                 ['unit_letters.*', 'letter_wishes.unit_letter_id', 'letter_wishes.*', 'letter_wishes.wish_id', 'wishes.id as wishes_id', 'wishes.name as wish_name']
@@ -298,26 +248,9 @@ class LetterController extends ApiController
                 ->groupBy(['letter_users.id', 'positions.id', 'users.id']);
         },
         ])
-
-        // ->joinSub($letter_user, 'letter_user', function ($join) {
-        //     $join->on('letter_user.letter_id', 'letters.id');
-        // })
-        // ->joinSub($letter_unit, 'letter_unit', function ($join) {
-        //     $join->on('letter_unit.letter_id', 'letters.id');
-        // })
-        // ->leftJoin('wishes', 'wishes.id', 'letter_wishes.wish_id')
         ->where('letters.id', $id)
-
         ->whereNull('letters.deleted_at')
-        // ->groupBy(['letters.id', 'letter_unit.wishes_id',  'letter_user.position_id', 'letter_user.p_level'])
         ->first();
-
-        // ->with(['wishes' => function ($query) {
-        //     $query->select(['wishes.id as wish_id', 'wishes.name as wish_name']);
-        // },
-        // ])
-
-        // dd($data);
 
         return Response::json($data);
     }
@@ -327,9 +260,6 @@ class LetterController extends ApiController
         try {
             $letter = Letter::where('id', $id)->first();
 
-            // dd($request->input('name'));
-
-            // $result = DB::transaction(function () use ($request,$id) {
             $data = Letter::where('id', $id)->update([
                     // 'status' => $request->status_edit ? $request->status_edit : $data->status,
                     'name' => $request->name ? $request->name : $letter->name,
@@ -340,19 +270,8 @@ class LetterController extends ApiController
                     'agenda_number' => $request->agenda_number ? $request->agenda_number : $letter->agenda_number,
                     'trait' => $request->sifat ? $request->sifat : $letter->trait,
                     'about' => $request->about ? $request->about : $letter->about,
-                    // 'signature' => $request->signature,
-                    // 'letter_file' => $request->file ? $request->file : $data->letter_file,
                     'created_by' => Auth::id(),
                 ]);
-
-            // if
-            // $position = Position::where('id', $request->forwarded)->first();
-
-            // $letter_user = LetterUser::create([
-            //     'user_id' => $position->user_id,
-            // ]);
-            //     return $data;
-            // });
 
             return response([
                 'data' => $data,
@@ -373,7 +292,7 @@ class LetterController extends ApiController
             DB::transaction(function () use ($result,$id) {
                 $file = Letter::where('id', $id)->get();
                 foreach ($file as $f) {
-                    $destinationPath[] = storage_path().'/files/'.$f->letter_file;
+                    $destinationPath[] = public_path().'/files/'.$f->letter_file;
                     File::delete($destinationPath);
                 }
 

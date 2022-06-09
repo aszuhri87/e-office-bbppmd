@@ -156,7 +156,7 @@
                         </tr>
                         <tr>
                            <td colspan="4" style="padding:10px;">
-                               Perihal :
+                               Hal :
                            </td>
                         </tr>
                         <tr>
