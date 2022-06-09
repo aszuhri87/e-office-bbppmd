@@ -78,8 +78,8 @@ class VerificationStatusController extends Controller
                     'positions.id as position_id',
                     DB::raw("CASE
                     WHEN positions.level='Admin' OR positions.level='Super Admin'
-                    THEN CONCAT(positions.level,' pada ', to_char(letter_users.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi'))
-                    ELSE CONCAT(positions.level,' ', positions.name,' pada ', to_char(letter_users.created_at , 'FMDayFM, dd FMMonthFM YYYY HH24:mi'))
+                    THEN CONCAT(positions.level,' pada ', to_char(letter_users.created_at , ' dd FMMonthFM YYYY HH24:mi'))
+                    ELSE CONCAT(positions.level,' ', positions.name,' pada ', to_char(letter_users.created_at , ' dd FMMonthFM YYYY HH24:mi'))
                      END as p_level"),
                     DB::raw("
                     CASE

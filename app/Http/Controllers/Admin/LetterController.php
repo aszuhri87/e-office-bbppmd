@@ -215,6 +215,8 @@ class LetterController extends ApiController
         $data = Letter::select([
             'letters.*',
             'letters.id',
+            DB::raw("to_char(letters.date , 'dd-MM-YYYY' ) as date"),
+            DB::raw("to_char(letters.received_date , 'dd-MM-YYYY' ) as received_date"),
             // 'letter_unit.wishes_id',
             // 'letter_user.position_id',
             // 'letter_user.p_level',
