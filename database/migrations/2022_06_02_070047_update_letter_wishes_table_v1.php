@@ -14,7 +14,7 @@ class UpdateLetterWishesTableV1 extends Migration
     public function up()
     {
         Schema::table('letter_wishes', function (Blueprint $table) {
-            $table->uuid('other_wishes')->nullable();
+            $table->string('other_wishes')->nullable();
         });
     }
 

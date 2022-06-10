@@ -224,7 +224,7 @@ class LetterController extends ApiController
 
         ->with(['unit_letter' => function ($query) {
             $query->select(
-                ['unit_letters.*', 'letter_wishes.unit_letter_id', 'letter_wishes.*', 'letter_wishes.wish_id', 'wishes.id as wishes_id', 'wishes.name as wish_name']
+                ['unit_letters.*', 'letter_wishes.unit_letter_id', 'letter_wishes.*', 'letter_wishes.wish_id', 'wishes.id as wishes_id', 'wishes.name as wish_name', 'letter_wishes.other_wishes']
                 )
 
                 ->join('letter_wishes', 'letter_wishes.unit_letter_id', 'unit_letters.id')

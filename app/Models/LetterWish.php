@@ -23,6 +23,7 @@ class LetterWish extends Model
         'id',
         'unit_letter_id',
         'wish_id',
+        'other_wishes',
     ];
 
     protected $dates = ['deleted_at'];

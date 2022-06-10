@@ -72,6 +72,12 @@
                             // $('input[name="wish['+i+']"][value="'+data.unit_letter[i]?.wish_id+'"]').prop('checked', true);
                             $('#d-'+data.unit_letter[i].wish_id).val(data.unit_letter[i].wish_id).prop('checked', true).attr("disabled", true);
                             // console.log(data.unit_letter[i]?.wish_id);
+                            if(data.unit_letter[i].other_wishes!=null){
+
+                            $('.input-lain').html(`
+                                        <input type="text" name="lain" value="`+data.unit_letter[i].other_wishes+`" style="outline: 0; border-width: 0 0 2px; " disabled>
+                            `);
+                            }
                         }
 
                         for(i in data.letter_user){
@@ -82,10 +88,6 @@
                                     <p>`+data.letter_user[i].note+`</p>
                                 `);
                             }
-
-                            // if(data.letter_user[i].p_level== 'Kepala'){
-                            //     $('#kepala').html( `<p>`+data.letter_user[i].postion+`</p>`)
-                            // }
                         }
 
                         $('div#files').append(`
@@ -136,11 +138,11 @@
                             $('#catatan'+i).html(data.letter_user[i]?.note);
                         }
 
-                        $(document).on('click','#lain', function(event){
-                            $('.input-lain').html(`
-                                <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">
-                            `);
-                        });
+                        $(document).on('click','#f9c5e916-6a13-427a-ab2c-60b021c148a4', function(event){
+                                    $('.input-lain').html(`
+                                        <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">
+                                    `);
+                                });
 
                         $('textarea[name="notes"]').prop('disabled',false);
                         showModal('modal-letter');

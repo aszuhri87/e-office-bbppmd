@@ -37,8 +37,8 @@
                                     </div>
                                     @endforeach
                                     <div class="custom-control custom-control-primary custom-checkbox mb-1" >
-                                        <input type="checkbox" name="lain" class="custom-control-input" id="lain" >
-                                        <label class="custom-control-label" for="lain">Lain-lain </label>
+                                        {{-- <input type="checkbox" name="lain" class="custom-control-input" id="lain" >
+                                        <label class="custom-control-label" for="lain">Lain-lain </label> --}}
                                         <div class="input-group input-lain">
 
                                         </div>
@@ -192,6 +192,12 @@
                                         <input type="checkbox" name="wish[{{$loop->index}}]" value="{{$ws->id}}" class="custom-control-input" id="d-{{$ws->id}}" >
                                         <label class="custom-control-label" for="d-{{$ws->id}}">{{$ws->name}}</label>
                                     </div>
+                                    @if ($ws->name=="Lain-lain")
+                                    <div class="input-group input-lain pl-2">
+
+                                    </div>
+
+                                    @endif
                                 </div>
                                 @endforeach
                             </td>

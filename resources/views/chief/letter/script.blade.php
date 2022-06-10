@@ -73,6 +73,13 @@
                         for(i in data.unit_letter){
                             // $('input[name="wish['+i+']"][value="'+data.unit_letter[i]?.wish_id+'"]').prop('checked', true);
                             $('#d-'+data.unit_letter[i].wish_id).val(data.unit_letter[i].wish_id).prop('checked', true).attr("disabled", true);
+
+                            if(data.unit_letter[i].other_wishes!=null){
+
+                                $('.input-lain').html(`
+                                            <input type="text" name="lain" value="`+data.unit_letter[i].other_wishes+`" style="outline: 0; border-width: 0 0 2px; " disabled>
+                            `);
+                            }
                             // console.log(data.unit_letter[i]?.wish_id);
                         }
 
@@ -91,6 +98,8 @@
                             <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="150%" height="600">
                             </embed></p>
                         `);
+
+
 
                         showModal('modal-document');
 
@@ -127,6 +136,10 @@
                         for(i in data.unit_letter){
                             // $('input[name="wish['+i+']"][value="'+data.unit_letter[i]?.wish_id+'"]').prop('checked', true);
                             $('#'+data.unit_letter[i]?.wish_id).val(data.unit_letter[i]?.wish_id).prop('checked', true).attr("disabled", true);
+
+                            // if (data.unit_letter[i]?.wish_id=="#f9c5e916-6a13-427a-ab2c-60b021c148a4"){
+
+                            // }
                             // console.log(data.unit_letter[i]?.wish_id);
                         }
 
@@ -136,11 +149,16 @@
                             $('#'+data.letter_user[i]?.position_id).val(data.letter_user[i]?.position_id).prop('checked', true).attr("disabled", true);
                         }
 
-                        $(document).on('click','#lain', function(event){
-                            $('.input-lain').html(`
-                                <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">
-                            `);
-                        });
+                        // $(document).on('click','#lain', function(event){
+                        //     $('.input-lain').html(`
+                        //         <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">
+                        //     `);
+                        // });
+                        $(document).on('click','#f9c5e916-6a13-427a-ab2c-60b021c148a4', function(event){
+                                    $('.input-lain').html(`
+                                        <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">
+                                    `);
+                                });
 
                         showModal('modal-letter');
 

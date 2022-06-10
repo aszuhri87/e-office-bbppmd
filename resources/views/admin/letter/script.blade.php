@@ -16,38 +16,12 @@
                 $('#form-letter-create').attr('method','POST');
                 $('#form-letter-create').attr('enctype','multipart/form-data');
 
-                // $.get('/applicant/document-select/'+id, function(data){
-                //     $('#form-doc-create').find('input[name="id_cat"]').val(id);
-                //         for (i in data){
-                //             if(data[i].data_type == "textarea"){
-                //                 $('.label-'+i).html(``+data[i].title+``);
-                //                 $('.text-'+i).html(`
-                //                 <textarea data-length="50" class="form-control char-textarea" id="`+data[i].data_type+`" name="requirement_value[`+i+`]" rows="4" placeholder=""></textarea>
-                //             `);
-                //             }else
-                //             {
-                //                 $('.label-'+i).html(``+data[i].title+``);
-                //                 $('.input-'+i).html(`
-                //                     <input type="`+data[i].data_type+`"  class="form-control" placeholder="`+data[i].title+`" name="requirement_value[`+i+`]">
-                //                 `);
-                //             }
-
                 $('.dropify').dropify();
-
-                        // $(document).on('click','#lain', function(event){
-                        // $('.input-lain').html(`
-                        //     <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">
-                        //     `);
-
-                        // });
 
                 $('#modal-letter').modal('show');
                 //     }
                 // })
             });
-
-
-
 
             $(document).on('click', '.btn-detail', function(event){
                 event.preventDefault();
@@ -73,6 +47,12 @@
                             // $('input[name="wish['+i+']"][value="'+data.unit_letter[i]?.wish_id+'"]').prop('checked', true);
                             $('#d-'+data.unit_letter[i].wish_id).val(data.unit_letter[i].wish_id).prop('checked', true).attr("disabled", true);
                             // console.log(data.unit_letter[i]?.wish_id);
+                            if(data.unit_letter[i].other_wishes!=null){
+
+                            $('.input-lain').html(`
+                                        <input type="text" name="lain" value="`+data.unit_letter[i].other_wishes+`" style="outline: 0; border-width: 0 0 2px; " disabled>
+                            `);
+                            }
                         }
 
                         for(i in data.letter_user){

@@ -82,11 +82,13 @@
                             // $('input[name="wish['+i+']"][value="'+data.unit_letter[i]?.wish_id+'"]').prop('checked', true);
                             $('#d-'+data.unit_letter[i].wish_id).val(data.unit_letter[i].wish_id).prop('checked', true).attr("disabled", true);
                             // console.log(data.unit_letter[i]?.wish_id);
+                            $('.input-lain').html(`
+                                <input type="text" name="lain" value="`+data.unit_letter[i].other_wishes+`" style="outline: 0; border-width: 0 0 2px; " disabled>
+                            `);
                         }
 
                         for(i in data.letter_user){
                             $('#d-'+data.letter_user[i].position_id).val(data.letter_user[i].position_id).prop('checked', true).attr("disabled", true);
-
 
                             if (data.letter_user[i].note != null){
                                 $('div#catatan').append(`
@@ -96,15 +98,11 @@
                         }
 
                         $('div#files').append(`
+                            <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="50%" height="600">
+                            </embed></p>
+                        `);
 
-                        <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="50%" height="600">
-                        </embed></p>
-                            `);
-
-
-
-                        showModal('modal-document');
-
+                    showModal('modal-document');
                 });
 
             });
