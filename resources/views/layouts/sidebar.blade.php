@@ -73,7 +73,7 @@
             {{-- @endhasrole --}}
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps</span><i data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item nav-pill-success @if (Request::is('chief/letter-chief')) active @endif"><a class="d-flex align-items-center" href="//chief/letter-chief/letter-chief"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
+            <li class=" nav-item nav-pill-success @if (Request::is('chief/letter-chief')) active @endif"><a class="d-flex align-items-center" href="/chief/letter-chief"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
             </li>
             <li class=" nav-item nav-pill-success @if (Request::is('chief/verification')) active @endif"><a class="d-flex align-items-center" href="/chief/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
             </li>
@@ -87,9 +87,9 @@
             {{-- @endhasrole --}}
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps</span><i data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item nav-pill-success @if (Request::is('chief_div/chief_div/letter-chief_div')) active @endif"><a class="d-flex align-items-center" href="/chief_div/letter-chief_div"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
+            <li class=" nav-item nav-pill-success @if (Request::is('chief_div/letter-chief_div')) active @endif"><a class="d-flex align-items-center" href="/chief_div/letter-chief_div"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
             </li>
-            <li class=" nav-item nav-pill-success @if (Request::is('chief_div/chief_div/verification')) active @endif"><a class="d-flex align-items-center" href="/chief_div/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
+            <li class=" nav-item nav-pill-success @if (Request::is('chief_div/verification')) active @endif"><a class="d-flex align-items-center" href="/chief_div/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
             </li>
             {{-- <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief_div/done"><i data-feather="check-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Selesai</span></a>
             </li> --}}
