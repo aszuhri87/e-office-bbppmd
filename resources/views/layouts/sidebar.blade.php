@@ -41,7 +41,7 @@
 
 
             @hasrole('superadmin|admin')
-            <li class=" nav-item nav-pill-success @if (Request::is('admin/dashboard')) active @endif"><a class="d-flex align-items-center" href="/admin/dashboard"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
+            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/dashboard"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
             </li>
         {{-- @endhasrole --}}
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps</span><i data-feather="more-horizontal"></i>
@@ -73,9 +73,9 @@
             {{-- @endhasrole --}}
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps</span><i data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief/letter-chief"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
+            <li class=" nav-item nav-pill-success @if (Request::is('admin/chief/letter-chief')) active @endif"><a class="d-flex align-items-center" href="/chief/letter-chief"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
             </li>
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
+            <li class=" nav-item nav-pill-success @if (Request::is('admin/chief/verification')) active @endif"><a class="d-flex align-items-center" href="/chief/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
             </li>
             {{-- <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief/done"><i data-feather="check-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Selesai</span></a>
             </li> --}}
@@ -87,9 +87,9 @@
             {{-- @endhasrole --}}
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps</span><i data-feather="more-horizontal"></i>
             </li>
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief_div/letter-chief_div"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
+            <li class=" nav-item nav-pill-success@if (Request::is('admin/chief_div/letter-chief_div')) active @endif"><a class="d-flex align-items-center" href="/chief_div/letter-chief_div"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
             </li>
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief_div/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
+            <li class=" nav-item nav-pill-success@if (Request::is('admin/chief_div/verification')) active @endif"><a class="d-flex align-items-center" href="/chief_div/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
             </li>
             {{-- <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief_div/done"><i data-feather="check-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Selesai</span></a>
             </li> --}}
@@ -100,7 +100,7 @@
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Akun &amp; Data</span><i data-feather="more-horizontal"></i>
           {{-- @role('super admin') --}}
           @hasrole('superadmin')
-            <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/manage-user"><i data-feather="user-plus"></i><span class="menu-title text-truncate" data-i18n="Documentation">Manajemen User</span></a>
+            <li class=" nav-item @if (Request::is('admin/manage-user')) active @endif"><a class="d-flex align-items-center" href="/admin/manage-user"><i data-feather="user-plus"></i><span class="menu-title text-truncate" data-i18n="Documentation">Manajemen User</span></a>
             </li>
             {{-- <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/profile"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="Documentation">Profile</span></a>
             </li> --}}
