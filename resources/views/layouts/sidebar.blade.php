@@ -41,27 +41,27 @@
 
 
             @hasrole('superadmin|admin')
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/dashboard"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
+            <li class=" nav-item nav-pill-success @if (Request::is('admin/dashboard')) active @endif"><a class="d-flex align-items-center" href="/admin/dashboard"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboards</span></a>
             </li>
         {{-- @endhasrole --}}
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps</span><i data-feather="more-horizontal"></i>
             </li>
             <li class="nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="database"></i><span class="menu-title text-truncate" data-i18n="Menu Levels">Master Data</span></a>
                 <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="/admin/unit"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Second Level">Unit</span></a>
+                    <li class="nav-item @if (Request::is('admin/unit')) active @endif"><a class="d-flex align-items-center" href="/admin/unit"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Second Level">Unit</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="/admin/wish"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Second Level">Mengharapkan</span></a>
+                    <li class="nav-item @if (Request::is('admin/wish')) active @endif"><a class="d-flex align-items-center" href="/admin/wish"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Second Level">Mengharapkan</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="/admin/position"  data-toggle="tooltip" data-bs-placement="right" title="posisi"><i data-feather="circle"></i><span class="menu-item text-truncate">Posisi</span></a>
+                    <li class="nav-item @if (Request::is('admin/position')) active @endif"><a class="d-flex align-items-center" href="/admin/position"  data-toggle="tooltip" data-bs-placement="right" title="posisi"><i data-feather="circle"></i><span class="menu-item text-truncate">Posisi</span></a>
                     </li>
                 </ul>
             </li>
 
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/input-letter"><i data-feather="file-plus"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Input Surat</span></a>
+            <li class=" nav-item nav-pill-success @if (Request::is('admin/input-letter')) active @endif"><a class="d-flex align-items-center" href="/admin/input-letter"  ><i data-feather="file-plus"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Input Surat</span></a>
             </li>
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/letter"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
+            <li class=" nav-item nav-pill-success @if (Request::is('admin/letter')) active @endif"><a class="d-flex align-items-center" href="/admin/letter"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Disposisi Surat</span></a>
             </li>
-            <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
+            <li class=" nav-item nav-pill-success @if (Request::is('admin/verification')) active @endif"><a class="d-flex align-items-center" href="/admin/verification"><i data-feather="list"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Status Disposisi</span></a>
             </li>
             {{-- <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/admin/done"><i data-feather="check-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Selesai</span></a>
             </li> --}}

@@ -68,7 +68,7 @@ class LetterController extends ApiController
         $data = Letter::select([
             'letters.*',
             'letters.id',
-            DB::raw("to_char(letters.created_at , 'dd FMMonthFM YYYY HH24:mi' ) as tanggal"),
+            DB::raw("to_char(letters.created_at , 'dd TMMonth YYYY, HH24:mi' ) as tanggal"),
             // 'letter_user.position_id',
             // 'letter_user.p_level',
         ])
@@ -91,8 +91,8 @@ class LetterController extends ApiController
                     'positions.id as position_id',
                     DB::raw("CASE
                     WHEN positions.level='Admin' OR positions.level='Super Admin'
-                    THEN CONCAT(positions.level,' pada ', to_char(letter_users.created_at , 'dd FMMonthFM YYYY HH24:mi'))
-                    ELSE CONCAT(positions.level,' ', positions.name,' pada ', to_char(letter_users.created_at , 'dd FMMonthFM YYYY HH24:mi'))
+                    THEN CONCAT(positions.level,' pada ', to_char(letter_users.created_at , 'dd TMMonth YYYY, HH24:mi'))
+                    ELSE CONCAT(positions.level,' ', positions.name,' pada ', to_char(letter_users.created_at , 'dd TMMonth YYYY, HH24:mi'))
                      END as p_level"),
                     DB::raw("
                     CASE

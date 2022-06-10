@@ -10,7 +10,7 @@ class DashboardController extends ApiController
 {
     public function index()
     {
-        $chart = Letter::select(DB::raw('count(letters.id) as count'), DB::raw("to_char(letters.created_at, 'FMMonth') as month_name"))
+        $chart = Letter::select(DB::raw('count(letters.id) as count'), DB::raw("to_char(letters.created_at, 'TMMonth') as month_name"))
         ->join('letter_users', 'letter_users.letter_id', 'letters.id')
         ->where('letters.id', '!=', null)
         ->whereYear('letters.created_at', date('Y'))

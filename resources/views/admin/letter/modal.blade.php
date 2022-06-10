@@ -196,9 +196,13 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div>
+
+                <div class="container-fluid" >
+
+                <div class="modal-body" >
                      <!-- Basic -->
-                     <div class="row">
+                     <div class="row" >
                          <div class="col-2">
                             <img src="{{asset('logo.png')}}" alt="" height="150px" width="auto" style="padding-left: 0%;">
 
@@ -334,6 +338,8 @@
 
 
                     </div>
+
+                </div>
 
 
                 </div>
