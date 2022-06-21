@@ -27,7 +27,7 @@
                 printJS({
                     printable: 'print',
                     type: 'html',
-                    style:'.col-10{right:20%;}',
+                    style:'.col-10{right:8%;}',
                     css:[
                         '../../app-assets/css/bootstrap.css',
                         '../../css/app.css',
