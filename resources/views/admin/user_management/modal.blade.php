@@ -31,14 +31,6 @@
                                 <input type="password" class="form-control" id="password" name="password" placeholder="password" aria-label="password"  aria-describedby="password"   />
                             </div>
                             <div class="form-group">
-                                {{-- <label for="select_unit">Bidang</label> --}}
-                                {{-- <select class="form-control" name="select_unit">
-                                    <option value="">-- Pilih Bidang --</option>
-                                    @foreach ($unit as $dt )
-                                    <option value="{{$dt->id}}">{{$dt->name}}</option>
-                                    @endforeach
-                                    </select>
-                                </div> --}}
                                 <div class="form-group">
                                     <label for="select_unit">Posisi</label>
                                     <select class="form-control" name="select_position">

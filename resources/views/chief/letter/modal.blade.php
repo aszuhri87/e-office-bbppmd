@@ -15,93 +15,6 @@
                      <div class="col-md-12">
                         <form id="form-letter-create">
                             @csrf
-                            {{-- @hasrole('superadmin') --}}
-                            {{-- <div class="row">
-                                <div class="col-6 form-add">
-
-                                    <label class="form-label mt-auto">Nama Surat</label>
-                                    <div class="input-group">
-                                        <input type="text"  class="form-control" placeholder="Nama dokumen" name="name" required>
-                                    </div>
-
-                                    <label class="form-label mt-auto">Surat Dari</label>
-                                    <div class="input-group">
-                                        <input type="text"  class="form-control" placeholder="Nama Pengirim" name="from" required>
-                                    </div>
-
-                                    <label class="form-label mt-auto">Nomor Surat</label>
-                                    <div class="input-group">
-                                        <input type="text"  class="form-control" placeholder="Nomor Surat" name="letter_number" required>
-                                    </div>
-                                    <label class="form-label mt-auto">Tgl Surat</label>
-                                    <div class="input-group">
-                                        <input type="date"  class="form-control" name="date" required>
-                                    </div>
-
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label mt-auto">Diterima Tanggal</label>
-                                    <div class="input-group">
-                                        <input type="date"  class="form-control" name="received_date" required>
-                                    </div>
-                                    <label class="form-label mt-auto">Nomor Agenda</label>
-                                    <div class="input-group">
-                                        <input type="text"  class="form-control" placeholder="Nomor Agenda" name="agenda_number" required>
-                                    </div>
-                                    <label class="form-label mt-auto">Sifat :</label>
-                                    <div class="form-check form-check">
-                                        <input type="radio" id="sifat1" name="sifat" class="form-check-input"  value="Sangat Segera">
-                                        <label class="form-check-label" for="sifat1">Sangat Segera</label>
-                                      </div>
-                                      <div class="form-check form-check">
-                                        <input type="radio" id="sifat2" name="sifat" class="form-check-input"  value="Segera">
-                                        <label class="form-check-label" for="sifat2">Segera</label>
-                                      </div>
-                                      <div class="form-check form-check">
-                                        <input type="radio" id="sifat3" name="sifat" class="form-check-input" value="Rahasia">
-                                        <label class="form-check-label" for="sifat3">Rahasia</label>
-                                      </div>
-                                      <div class="form-check form-check">
-                                        <input type="radio" id="sifat4" name="sifat" class="form-check-input" value="Biasa">
-                                        <label class="form-check-label" for="sifat4">Biasa</label>
-                                      </div>
-                                    </div>
-                                </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-12">
-                                    <label class="form-label mt-auto">Hal</label>
-                                    <div class="form-label-group mb-0">
-                                        <textarea data-length="150" class="form-control char-textarea" id="textarea-counter" name="about" rows="3" placeholder="Hal"></textarea>
-                                        <label for="textarea-counter">Hal</label>
-                                    </div>
-                                    <small class="textarea-counter-value float-right"><span class="char-count">0</span> / 150 </small>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="form-group">
-
-                                <input type="file" name="letter_file" class="dropify">
-
-                            </div> --}}
-                            {{-- @endhasrole --}}
-
-                            {{-- @hasrole('chief_of_division')
-                            <div class="row">
-                                <div class="col-12">
-                                    <label class="form-label mt-auto">Hal</label>
-                                    <div class="form-label-group mb-0">
-                                        <textarea data-length="20" class="form-control char-textarea" id="textarea-counter" name="about" rows="3" placeholder="Hal"></textarea>
-                                        <label for="textarea-counter">Hal</label>
-                                    </div>
-                                    <small class="textarea-counter-value float-right"><span class="char-count">0</span> / 20 </small>
-                                </div>
-                            </div>
-                            <hr>
-
-
-
-                            @endhasrole --}}
                             <div class="row">
                                 <div class="col-6">
                                     <label class="form-label mt-auto">Diteruskan Kepada sdr :</label>
@@ -122,10 +35,7 @@
                                     </div>
                                     @endforeach
                                     <div class="custom-control custom-control-primary custom-checkbox mb-1" >
-                                        {{-- <input type="checkbox" name="lain" class="custom-control-input" id="lain" >
-                                        <label class="custom-control-label" for="lain">Lain-lain </label> --}}
                                         <div class="input-group input-lain">
-
                                         </div>
                                     </div>
                                 </div>
@@ -133,48 +43,14 @@
 
                             {{-- <hr> --}}
                             <div class="row mt-1">
-
-                                {{-- <div class="custom-control custom-control-primary custom-checkbox mb-1" >
-                                    <input type="checkbox" name="acc" class="custom-control-input" value="Disetujui" id="acc" >
-                                    <label class="custom-control-label" for="acc">Acc</label>
-
-                                </div> --}}
                                 <div class="col-12">
                                     <label class="form-label mt-auto">Catatan</label>
                                         <div class="form-label-group mb-0">
                                             <textarea class="form-control char-textarea" name="notes" id="textarea-counter" rows="3" placeholder="Catatan"></textarea>
                                         </div>
                                         <hr>
-
                                </div>
-                                {{-- <div class="col-6">
-                                    <label class="form-label mt-auto">Hal</label>
-                                    <div class="form-label-group mb-0">
-                                        <textarea data-length="20" class="form-control char-textarea" id="textarea-counter" rows="3" placeholder="Hal"></textarea>
-                                        <label for="textarea-counter">Hal</label>
-                                    </div>
-                                    <small class="textarea-counter-value float-right"><span class="char-count">0</span> / 20 </small>
-                                </div>
-
-                                <div class="col-6"> --}}
-                                    {{-- <label class="form-label mt-auto">TTD</label>
-                                    <div id="myId" class="fallback dropzone">
-                                        <input name="file" type="file" multiple />
-                                        <div class="dz-message">Drop files here or click to upload.</div>
-                                      </div> --}}
-
-                                      {{-- <div class="file-upload-wrapper">
-                                        <input type="file" id="input-file-now" class="file-upload" />
-                                      </div> --}}
-                                {{-- </div> --}}
-
-
-
-                               <!-- single file upload starts -->
-
-                    <!-- single file upload ends -->
                             </div>
-
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -193,14 +69,25 @@
         <div class="modal-dialog modal-dialog-centered" role="document" style="min-width:1000px; ">
             <div class="modal-content">
                 <div class="modal-header">
+                    <button type="button" id="btn-print" data-toggle="tooltip" data-placement="top" title="Print Lembar Disposisi" class="btn btn-outline-primary" style="border-radius: 50px;" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#44559f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                    </button>
+                    <br>
                     <h5 class="modal-title" id="SubUnitModalTitle"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div>
+
+                <div class="container" >
+
+
+                <div class="modal-body" >
+
+                    <form  id="print">
                      <!-- Basic -->
-                     <div class="row">
+                     <div class="row mt-2" >
                          <div class="col-2">
                             <img src="{{asset('logo.png')}}" alt="" height="150px" width="auto" style="padding-left: 0%;">
 
@@ -222,8 +109,6 @@
                         <br>BALAI BESAR PELATIHAN DAN PEMBERDAYAAN MASYARAKAT DESA, <br> DAERAH TERTINGGAL, DAN TRANSMIGRASI YOGYAKARTA
                    </h5>
                     </div>
-
-
                     <table style="border: solid 1px black;" >
                         <tr style="border: solid 1px black;">
                             <td style="border: solid 1px black; width: 550px; padding:10px;" rowspan="4">
@@ -317,8 +202,6 @@
                                     @endif
                                 </div>
 
-
-
                                 @endforeach
                             </td>
                         </tr>
@@ -341,13 +224,9 @@
                             </td>
                         </tr>
                     </table>
-
+                    </form>
                     <div class="row mt-1" id="files">
-
-
                     </div>
-
-
                 </div>
             </div>
         </div>

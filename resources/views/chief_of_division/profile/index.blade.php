@@ -53,20 +53,7 @@
                                     <span class="font-weight-bold">Information</span>
                                 </a>
                             </li>
-                            <!-- social -->
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" id="account-pill-social" data-toggle="pill" href="#account-vertical-social" aria-expanded="false">
-                                    <i data-feather="link" class="font-medium-3 mr-1"></i>
-                                    <span class="font-weight-bold">Social</span>
-                                </a>
-                            </li> --}}
-                            <!-- notification -->
-                            {{-- <li class="nav-item">
-                                <a class="nav-link" id="account-pill-notifications" data-toggle="pill" href="#account-vertical-notifications" aria-expanded="false">
-                                    <i data-feather="bell" class="font-medium-3 mr-1"></i>
-                                    <span class="font-weight-bold">Notifications</span>
-                                </a>
-                            </li> --}}
+
                         </ul>
                     </div>
                     <!--/ left menu section -->
@@ -83,10 +70,7 @@
                                             <a href="javascript:void(0);" class="mr-25">
                                                 <img src="{{asset('/files/'.$data->image)}}" id="account-upload-img" class="rounded mr-50" alt="profile image" height="80" width="80" />
                                             </a>
-                                            <!-- upload and reset button -->
-                                            <!--/ header media -->
 
-                                            <!-- form -->
 
                                         <form class="validate-form mt-2" id="change-profile">
                                             <div class="media-body mt-75 ml-1">

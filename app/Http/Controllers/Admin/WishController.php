@@ -7,20 +7,13 @@ use App\Models\Wish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
 
 class WishController extends Controller
 {
     public function index()
     {
-        // $docs_req_category = DocumentCategoryRequirement::select([
-        //     'requirement_types.data_type as data_type',
-        //     'requirement_types.description as title', 'document_category_requirements.*',
-        // ])
-        // ->leftJoin('requirement_types', 'requirement_types.requirement_type', 'document_category_requirements.requirement_type')
-        // ->whereNull(['document_category_requirements.deleted_at', 'requirement_types.deleted_at'])
-        // ->get();
-
         return view('admin.master_data.wish.index');
     }
 
@@ -47,7 +40,7 @@ class WishController extends Controller
 
             // return $data;
 
-            // Alert::success('Sukses', 'Berhasil Menambahkan Data!');
+            Alert::success('Sukses', 'Berhasil Menambahkan Data!');
 
             return redirect()->back();
 
@@ -72,8 +65,6 @@ class WishController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            // dd($request->all());
-
             $data = Wish::where('id', $id)->update([
                 'name' => $request->name ? $request->name : $data->name,
                 'description' => $request->description ? $request->description : $data->description,

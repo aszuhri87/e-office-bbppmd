@@ -59,13 +59,6 @@ class LetterController extends ApiController
 
         $user->with('roles')->where('id', Auth::id())->first();
 
-        // if ($user->hasRole('admin') || $user->hasRole('superadmin')) {
-        //     $letter_user->where('positions.level', '!=', 'Admin')
-        //     ->where('positions.level', '!=', 'Super Admin');
-        // }
-
-        // dd($letter_wish->get());
-
         $data = Letter::select([
             'letters.*',
             'letters.id',
@@ -173,7 +166,6 @@ class LetterController extends ApiController
                         'agenda_number' => $request->agenda_number,
                         'trait' => $request->sifat,
                         'about' => $request->about,
-                        // 'signature' => $request->signature,
                         'letter_file' => $name,
                         'created_by' => Auth::id(),
                 ]);
@@ -182,46 +174,6 @@ class LetterController extends ApiController
                     'letter_id' => $data->id,
                     'user_id' => Auth::id(),
                      ]);
-
-                // dd($request->forwarded);
-                // foreach ($request->input('forwarded') as $forward) {
-                //     $position = Position::whereIn('id', [$forward])->first();
-                //     // $user_id = $position[$i]['user_id'];
-
-                //     $letter_user = LetterUser::create([
-                //     'letter_id' => $data->id,
-                //     'user_id' => $position->user_id,
-                // ]);
-
-                //     $unit_letter = UnitLetter::create([
-                //     'letter_id' => $letter_user->letter_id,
-                //     'letter_user_id', $letter_user->id,
-                // ]);
-                // }
-
-                // for ($i = 0; $i < count($request->forwarded); ++$i) {
-                //     $position[$i] = Position::whereIn('id', [$request->forwarded[$i]])->first();
-                //     $user_id = $position[$i]['user_id'];
-
-                //     $letter_user = LetterUser::create([
-                //         'letter_id' => $data->id,
-                //         'user_id' => $user_id,
-                //     ]);
-
-                //     $unit_letter = UnitLetter::create([
-                //         'letter_id' => $letter_user->letter_id,
-                //         'letter_user_id', $letter_user->id,
-                //     ]);
-                // }
-
-                // foreach ($request->input('wish') as $w) {
-                //     $letter_wish = LetterWish::create([
-                //         'unit_letter_id' => $unit_letter->id,
-                //         'wish_id' => $w,
-                //     ]);
-                // }
-
-                // dd($position->user_id);
 
                 return $data;
             });
@@ -240,12 +192,6 @@ class LetterController extends ApiController
     public function show($id)
     {
         date_default_timezone_set('Asia/Jakarta');
-        // $doc_category_req = DocumentCategoryRequirement::select([
-        //     'requirement_types.data_type as data_type',
-        //     'requirement_types.description as title', 'document_category_requirements.*',
-        // ])
-        // ->leftJoin('requirement_types', 'requirement_types.requirement_type', 'document_category_requirements.requirement_type')
-        // ->whereNull(['document_category_requirements.deleted_at', 'requirement_types.deleted_at']);
 
         $letter_unit = UnitLetter::select(
             ['unit_letters.*', 'letter_wishes.unit_letter_id', 'letter_wishes.*', 'letter_wishes.wish_id', 'wishes.id as wishes_id', 'wishes.name as wish_name']
@@ -273,9 +219,6 @@ class LetterController extends ApiController
             'letters.id',
             DB::raw("to_char(letters.date , 'dd-MM-YYYY' ) as date"),
             DB::raw("to_char(letters.received_date , 'dd-MM-YYYY' ) as received_date"),
-            // 'letter_unit.wishes_id',
-            // 'letter_user.position_id',
-            // 'letter_user.p_level',
         ])
         ->with(['unit_letter' => function ($query) {
             $query->select(
@@ -298,7 +241,7 @@ class LetterController extends ApiController
                     DB::raw("
                     CASE
                     WHEN letter_users.notes IS NOT NULL AND positions.level IS NOT NULL AND positions.name IS NOT NULL
-                    THEN CONCAT(letter_users.notes,' - ',positions.level,' ', positions.name)
+                    THEN CONCAT(positions.level,' ', positions.name,' - ',letter_users.notes)
                     END as note"),
                 ], )
                 ->join('users', 'users.id', 'letter_users.user_id')
@@ -313,14 +256,6 @@ class LetterController extends ApiController
         ->whereNull('letters.deleted_at')
         ->groupBy('letters.id')
         ->first();
-        // dd(count($data->unit_letter));
-
-        // ->with(['wishes' => function ($query) {
-        //     $query->select(['wishes.id as wish_id', 'wishes.name as wish_name']);
-        // },
-        // ])
-
-        // dd($data);
 
         return Response::json($data);
     }
@@ -348,11 +283,6 @@ class LetterController extends ApiController
                     $forward[] = $request->input('forwarded');
                     foreach ($forward as $f) {
                         $position = Position::whereIn('id', $f)->get();
-
-                        // dd($position);
-                        // $user_id = $position[$i]['user_id'];
-
-                        // $letter_users = LetterUser::where('letter_id', $id)->first();
 
                         foreach ($position as $p) {
                             $letter_user = LetterUser::updateOrCreate([
@@ -388,16 +318,6 @@ class LetterController extends ApiController
                                 ]);
                     }
                 }
-                // dd($request->input('forwarded'));
-
-                // if
-            // $position = Position::where('id', $request->forwarded)->first();
-
-            // $letter_user = LetterUser::create([
-            //     'user_id' => $position->user_id,
-            // ]);
-            //     return $data;
-            // });
             });
 
             return response([

@@ -15,69 +15,6 @@
                 <div class="ol-xl-12 col-md-12 col-12 col-sm-12">
                 <section id="apexchart">
                     <div class="row">
-                        {{-- <div class="col-xl-12 col-md-12 col-12 col-sm-12">
-                            <div class="card card-statistics">
-                                <div class="card-header">
-                                    <h4 class="card-title">Statistics</h4>
-                                </div>
-                                <div class="card-body statistics-body">
-                                    <div class="row">
-                                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                            <div class="media">
-                                                <div class="avatar bg-light-primary mr-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="trending-up" class="avatar-icon"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="media-body my-auto">
-                                                    <h4 class="font-weight-bolder mb-0"></h4>
-                                                    <p class="card-text font-small-3 mb-0">Surat Masuk</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                            <div class="media">
-                                                <div class="avatar bg-light-info mr-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="user" class="avatar-icon"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="media-body my-auto">
-                                                    <h4 class="font-weight-bolder mb-0"></h4>
-                                                    <p class="card-text font-small-3 mb-0">Diproses</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
-                                            <div class="media">
-                                                <div class="avatar bg-light-danger mr-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="x-circle" class="avatar-icon"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="media-body my-auto">
-                                                    <h4 class="font-weight-bolder mb-0">5</h4>
-                                                    <p class="card-text font-small-3 mb-0">Surat Ditolak</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-sm-6 col-12">
-                                            <div class="media">
-                                                <div class="avatar bg-light-success mr-2">
-                                                    <div class="avatar-content">
-                                                        <i data-feather="check-circle" class="avatar-icon"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="media-body my-auto">
-                                                    <h4 class="font-weight-bolder mb-0">5</h4>
-                                                    <p class="card-text font-small-3 mb-0">Surat Diterima</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                         <!-- Area Chart starts -->
                         <div class="col-xl-12 col-md-12 col-12 col-sm-12">
                             <div class="card">

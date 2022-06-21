@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/regular.min.css" integrity="sha512-YoxvmIzlVlt4nYJ6QwBqDzFc+2aXL7yQwkAuscf2ZAg7daNQxlgQHV+LLRHnRXFWPHRvXhJuBBjQqHAqRFkcVw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/select/select2.min.css')}}">
+    <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css">
+
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/bootstrap-extended.css')}}">
@@ -135,15 +137,8 @@
        <!-- END: Page Vendor JS-->
 
    <!-- BEGIN: Page Vendor JS-->
-
-
-
     <script src="{{asset('app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script>
     <script src="../../../app-assets/vendors/js/file-uploaders/dropzone.min.js"></script>
-    {{-- <script src="../../../app-assets/vendors/js/forms/select/select2.full.min.js"></script> --}}
-    {{-- <script src="../../../app-assets/vendors/js/tables/datatable/datatables.buttons.min.js"></script>
-   <script src="../../../app-assets/vendors/js/tables/datatable/buttons.bootstrap4.min.js"></script> --}}
-   <!-- END: Page Vendor JS-->
 
    <!-- BEGIN: Page JS-->
    <script src="{{asset('app-assets/js/scripts/tables/table-datatables-advanced.js')}}"></script>
@@ -155,7 +150,7 @@
    <script src="https://unpkg.com/dropzone@6.0.0-beta.1/dist/dropzone-min.js"></script>
    <script src="{{asset('js/dropify.js')}}"></script>
    <script src="{{asset('js/jquery.blockUI.js')}}"></script>
-
+   <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 
 
 

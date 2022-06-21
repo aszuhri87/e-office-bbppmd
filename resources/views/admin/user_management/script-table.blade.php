@@ -23,8 +23,6 @@
                     { data: 'name' },
                     { data: 'username'},
                     { data: 'email'},
-                    // { data: 'unit',"searchable": false },
-                    // { data: 'status' },
                     { defaultContent: '' }
                     ],
                 columnDefs: [

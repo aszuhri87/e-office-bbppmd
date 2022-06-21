@@ -26,18 +26,12 @@ class VerificationStatusController extends Controller
         $letters = DB::table('letters')
         ->select([
             'letters.id',
-
             'letters.created_by',
             DB::raw("CONCAT(letters.letter_number,' - ',letters.from) as name"),
-            // ])
-            // ->joinSub($letter_user, 'letter_user', function ($join) {
-            //     $join->on('letter_user.letter_id', 'letters.id');
             ])
         ->where('letters.letter_number', 'ilike', '%'.$term.'%')
         ->whereNull('letters.deleted_at')
         ->get();
-
-        // dd($letters);
 
         $formatted_tags = [];
 
@@ -54,18 +48,14 @@ class VerificationStatusController extends Controller
         $data = Letter::select([
             'letters.*',
             'letters.id',
-            // 'letter_unit.wishes_id',
-            // 'letter_user.position_id',
             'users.name as created',
         ])
         ->with(['unit_letter' => function ($query) {
             $query->select(
                 ['unit_letters.*', 'letter_wishes.unit_letter_id', 'letter_wishes.*', 'letter_wishes.wish_id', 'wishes.id as wishes_id', 'wishes.name as wish_name']
                 )
-
                 ->join('letter_wishes', 'letter_wishes.unit_letter_id', 'unit_letters.id')
                 ->leftJoin('wishes', 'wishes.id', 'letter_wishes.wish_id')
-                // ->where('unit_letters.letter_id', $id)
                 ->whereNull('unit_letters.deleted_at');
         },
         ])

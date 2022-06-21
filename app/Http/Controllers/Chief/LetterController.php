@@ -9,7 +9,6 @@ use App\Models\LetterWish;
 use App\Models\Position;
 use App\Models\UnitLetter;
 use App\Models\User;
-use App\Models\Wish;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -57,13 +56,6 @@ class LetterController extends ApiController
         $user = User::where('id', Auth::id())->first();
 
         $user->with('roles')->where('id', Auth::id())->first();
-
-        // if ($user->hasRole('admin') || $user->hasRole('superadmin')) {
-        //     $letter_user->where('positions.level', '!=', 'Admin')
-        //     ->where('positions.level', '!=', 'Super Admin');
-        // }
-
-        // dd($letter_wish->get());
 
         $data = Letter::select([
             'letters.*',
@@ -144,8 +136,6 @@ class LetterController extends ApiController
         ->orderBy('created_at', 'desc')
         ->groupBy('letters.id');
 
-        // $admin = Admin::where('user_id', Auth::id())->first();
-
         return DataTables::eloquent($data)->addIndexColumn()->make(true);
     }
 
@@ -179,46 +169,6 @@ class LetterController extends ApiController
                     'letter_id' => $data->id,
                     'user_id' => Auth::id(),
                      ]);
-
-                // dd($request->forwarded);
-                // foreach ($request->input('forwarded') as $forward) {
-                //     $position = Position::whereIn('id', [$forward])->first();
-                //     // $user_id = $position[$i]['user_id'];
-
-                //     $letter_user = LetterUser::create([
-                //     'letter_id' => $data->id,
-                //     'user_id' => $position->user_id,
-                // ]);
-
-                //     $unit_letter = UnitLetter::create([
-                //     'letter_id' => $letter_user->letter_id,
-                //     'letter_user_id', $letter_user->id,
-                // ]);
-                // }
-
-                // for ($i = 0; $i < count($request->forwarded); ++$i) {
-                //     $position[$i] = Position::whereIn('id', [$request->forwarded[$i]])->first();
-                //     $user_id = $position[$i]['user_id'];
-
-                //     $letter_user = LetterUser::create([
-                //         'letter_id' => $data->id,
-                //         'user_id' => $user_id,
-                //     ]);
-
-                //     $unit_letter = UnitLetter::create([
-                //         'letter_id' => $letter_user->letter_id,
-                //         'letter_user_id', $letter_user->id,
-                //     ]);
-                // }
-
-                // foreach ($request->input('wish') as $w) {
-                //     $letter_wish = LetterWish::create([
-                //         'unit_letter_id' => $unit_letter->id,
-                //         'wish_id' => $w,
-                //     ]);
-                // }
-
-                // dd($position->user_id);
 
                 return $data;
             });
@@ -261,7 +211,7 @@ class LetterController extends ApiController
                 DB::raw("
                 CASE
                 WHEN letter_users.notes IS NOT NULL AND positions.level IS NOT NULL AND positions.name IS NOT NULL
-                THEN CONCAT(letter_users.notes,' - ',positions.level,' ', positions.name)
+                THEN CONCAT(positions.level,' ', positions.name,' - ',letter_users.notes)
                 END as note"), ],
                 )
                 ->join('users', 'users.id', 'letter_users.user_id')
@@ -341,15 +291,6 @@ class LetterController extends ApiController
                                     ]);
                     }
                 }
-
-                // if
-            // $position = Position::where('id', $request->forwarded)->first();
-
-            // $letter_user = LetterUser::create([
-            //     'user_id' => $position->user_id,
-            // ]);
-            //     return $data;
-            // });
             });
 
             return response([

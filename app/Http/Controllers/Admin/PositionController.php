@@ -14,14 +14,6 @@ class PositionController extends Controller
 {
     public function index()
     {
-        // $docs_req_category = DocumentCategoryRequirement::select([
-        //     'requirement_types.data_type as data_type',
-        //     'requirement_types.description as title', 'document_category_requirements.*',
-        // ])
-        // ->leftJoin('requirement_types', 'requirement_types.requirement_type', 'document_category_requirements.requirement_type')
-        // ->whereNull(['document_category_requirements.deleted_at', 'requirement_types.deleted_at'])
-        // ->get();
-
         $unit = Unit::all();
 
         return view('admin.master_data.position.index', ['unit' => $unit]);
@@ -35,8 +27,6 @@ class PositionController extends Controller
         ])
         ->whereNull('positions.deleted_at');
 
-        // $admin = Admin::where('user_id', Auth::id())->first();
-
         return DataTables::query($data)->addIndexColumn()->make(true);
     }
 
@@ -47,10 +37,6 @@ class PositionController extends Controller
                 'name' => $request->name,
                 'level' => $request->level,
             ]);
-
-            // return $data;
-
-            // Alert::success('Sukses', 'Berhasil Menambahkan Data!');
 
             return redirect()->back();
 

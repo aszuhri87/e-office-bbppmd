@@ -239,7 +239,7 @@ class LetterController extends ApiController
                     DB::raw("
                     CASE
                     WHEN letter_users.notes IS NOT NULL
-                    THEN CONCAT(letter_users.notes,' - ',positions.level,' ', positions.name)
+                    THEN CONCAT(positions.level,' ', positions.name,' - ',letter_users.notes)
                     END as note"),
                     DB::raw("CONCAT(positions.level,' ', positions.name) as p_level"), ],
                 )

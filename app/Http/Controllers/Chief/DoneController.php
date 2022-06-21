@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\ApiController;
 use App\Models\Letter;
 use App\Models\LetterUser;
-use App\Models\LetterWish;
 use App\Models\Position;
-use App\Models\UnitLetter;
 use App\Models\User;
 use App\Models\Wish;
 use Illuminate\Http\Request;
@@ -53,13 +51,6 @@ class DoneController extends ApiController
         $user = User::where('id', Auth::id())->first();
 
         $user->with('roles')->where('id', Auth::id())->first();
-
-        // if ($user->hasRole('admin') || $user->hasRole('superadmin')) {
-        //     $letter_user->where('positions.level', '!=', 'Admin')
-        //     ->where('positions.level', '!=', 'Super Admin');
-        // }
-
-        // dd($letter_wish->get());
 
         $data = Letter::select([
             'letters.*',
@@ -174,46 +165,6 @@ class DoneController extends ApiController
                     'user_id' => Auth::id(),
                 ]);
 
-                // dd($request->forwarded);
-                // foreach ($request->input('forwarded') as $forward) {
-                //     $position = Position::whereIn('id', [$forward])->first();
-                //     // $user_id = $position[$i]['user_id'];
-
-                //     $letter_user = LetterUser::create([
-                //     'letter_id' => $data->id,
-                //     'user_id' => $position->user_id,
-                // ]);
-
-                //     $unit_letter = UnitLetter::create([
-                //     'letter_id' => $letter_user->letter_id,
-                //     'letter_user_id', $letter_user->id,
-                // ]);
-                // }
-
-                // for ($i = 0; $i < count($request->forwarded); ++$i) {
-                //     $position[$i] = Position::whereIn('id', [$request->forwarded[$i]])->first();
-                //     $user_id = $position[$i]['user_id'];
-
-                //     $letter_user = LetterUser::create([
-                //         'letter_id' => $data->id,
-                //         'user_id' => $user_id,
-                //     ]);
-
-                //     $unit_letter = UnitLetter::create([
-                //         'letter_id' => $letter_user->letter_id,
-                //         'letter_user_id', $letter_user->id,
-                //     ]);
-                // }
-
-                // foreach ($request->input('wish') as $w) {
-                //     $letter_wish = LetterWish::create([
-                //         'unit_letter_id' => $unit_letter->id,
-                //         'wish_id' => $w,
-                //     ]);
-                // }
-
-                // dd($position->user_id);
-
                 return $data;
             });
 
@@ -230,39 +181,6 @@ class DoneController extends ApiController
 
     public function show($id)
     {
-        // $doc_category_req = DocumentCategoryRequirement::select([
-        //     'requirement_types.data_type as data_type',
-        //     'requirement_types.description as title', 'document_category_requirements.*',
-        // ])
-        // ->leftJoin('requirement_types', 'requirement_types.requirement_type', 'document_category_requirements.requirement_type')
-        // ->whereNull(['document_category_requirements.deleted_at', 'requirement_types.deleted_at']);
-
-        $letter_unit = UnitLetter::select(
-            ['unit_letters.*', 'letter_wishes.unit_letter_id', 'letter_wishes.*', 'letter_wishes.wish_id', 'wishes.id as wishes_id', 'wishes.name as wish_name']
-            )
-
-            ->join('letter_wishes', 'letter_wishes.unit_letter_id', 'unit_letters.id')
-            ->leftJoin('wishes', 'wishes.id', 'letter_wishes.wish_id')
-            ->where('unit_letters.letter_id', $id)
-            ->whereNull('unit_letters.deleted_at');
-        // ->first();
-
-        $letter_user = LetterUser::select(
-            ['letter_users.*', 'letter_users.user_id', 'positions.id as position_id', DB::raw("CONCAT(positions.level,' ', positions.name) as p_level"),
-            DB::raw("
-            CASE
-            WHEN letter_users.notes IS NOT NULL
-            THEN CONCAT(letter_users.notes,' - ',positions.level,' ', positions.name)
-            END as note"), ],
-            )
-            ->join('users', 'users.id', 'letter_users.user_id')
-            ->leftJoin('positions', 'positions.user_id', 'users.id')
-            ->where('letter_users.letter_id', $id)
-            ->whereNull(['letter_users.deleted_at', 'users.deleted_at', 'positions.deleted_at'])
-            ->groupBy(['letter_users.id', 'positions.id', 'users.id']);
-
-        // dd($letter_wish->get());
-
         $data = Letter::select([
             'letters.*',
             'letters.id',

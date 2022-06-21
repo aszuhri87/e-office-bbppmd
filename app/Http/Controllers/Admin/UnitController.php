@@ -8,20 +8,13 @@ use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
+use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
 
 class UnitController extends Controller
 {
     public function index()
     {
-        // $docs_req_category = DocumentCategoryRequirement::select([
-        //     'requirement_types.data_type as data_type',
-        //     'requirement_types.description as title', 'document_category_requirements.*',
-        // ])
-        // ->leftJoin('requirement_types', 'requirement_types.requirement_type', 'document_category_requirements.requirement_type')
-        // ->whereNull(['document_category_requirements.deleted_at', 'requirement_types.deleted_at'])
-        // ->get();
-
         return view('admin.master_data.unit.index');
     }
 
@@ -48,7 +41,7 @@ class UnitController extends Controller
 
             // return $data;
 
-            // Alert::success('Sukses', 'Berhasil Menambahkan Data!');
+            Alert::success('Sukses', 'Berhasil Menambahkan Data!');
 
             return redirect()->back();
 

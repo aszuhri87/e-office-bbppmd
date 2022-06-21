@@ -54,19 +54,9 @@ class DoneController extends ApiController
 
         $user->with('roles')->where('id', Auth::id())->first();
 
-        // if ($user->hasRole('admin') || $user->hasRole('superadmin')) {
-        //     $letter_user->where('positions.level', '!=', 'Admin')
-        //     ->where('positions.level', '!=', 'Super Admin');
-        // }
-
-        // dd($letter_wish->get());
-
         $data = Letter::select([
             'letters.*',
             'letters.id',
-            // 'letter_unit.wishes_id',
-            // 'letter_user.position_id',
-            // 'letter_user.p_level',
         ])
         ->with(['unit_letter' => function ($query) {
             $query->select(

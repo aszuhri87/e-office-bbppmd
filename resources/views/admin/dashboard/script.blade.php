@@ -5,9 +5,6 @@
 
 $(function () {
     'use strict';
-
-
-
     var flatPicker = $('.flat-picker'),
     isRtl = $('html').attr('data-textdirection') === 'rtl',
     chartColors = {
@@ -33,9 +30,6 @@ $(function () {
           series1: '#008C44'
         }
     };
-
-
-
 
   // heat chart data generator
   function generateDataHeat(count, yrange) {

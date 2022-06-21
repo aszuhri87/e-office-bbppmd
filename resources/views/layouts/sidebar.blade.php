@@ -72,9 +72,6 @@
             {{-- <li class=" nav-item nav-pill-success"><a class="d-flex align-items-center" href="/chief_div/done"><i data-feather="check-circle"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Selesai</span></a>
             </li> --}}
             @endhasrole
-
-
-
             <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Akun &amp; Data</span><i data-feather="more-horizontal"></i>
           {{-- @role('super admin') --}}
           @hasrole('superadmin')

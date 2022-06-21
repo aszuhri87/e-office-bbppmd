@@ -27,28 +27,6 @@
         </div>
         <div class="content-body">
             <!-- Bootstrap Select start -->
-            {{-- <section class="bootstrap-select">
-                <div class="row">
-                    <div class="col-md-6 col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Pilih Kategori Dokumen</h4>
-                            </div>
-                            <div class="card-body">
-                                <!-- Basic Select -->
-                                <div class="form-group">
-                                    <label for="basicSelect">Kategori Dokumen</label>
-                                    <select class="form-control" id="select-docs-category" name="select_docs_category">
-                                            <option value="">-- Pilih --</option>
-
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> --}}
-                   <!-- Responsive Datatable -->
             <section id="responsive-datatable">
                 <div class="row">
                     <div class="col-12">
@@ -67,6 +45,7 @@
                                             <th>Dari</th>
                                             <th>Tanggal</th>
                                             <th>Nomor Surat</th>
+                                            <th>Nomor Agenda</th>
                                             <th>Diproses Oleh </th>
                                             <th>Aksi</th>
                                         </tr>
@@ -80,10 +59,6 @@
                     </div>
                 </div>
             </section>
-
-    <!--/ Responsive Datatable -->
-
-
         </div>
     </div>
 </div>

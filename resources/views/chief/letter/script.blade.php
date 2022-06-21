@@ -11,44 +11,38 @@
             $(document).on('click','#create-letter-modal', function(event){
                 event.preventDefault();
 
-                // var id_req = $(this).find('option:selected').val();
                 $('#form-letter-create').trigger("reset");
                 $('#form-letter-create').attr('action','{{url('chief/letter-chief')}}');
                 $('#form-letter-create').attr('method','POST');
                 $('#form-letter-create').attr('enctype','multipart/form-data');
-
-                // $.get('/applicant/document-select/'+id, function(data){
-                //     $('#form-doc-create').find('input[name="id_cat"]').val(id);
-                //         for (i in data){
-                //             if(data[i].data_type == "textarea"){
-                //                 $('.label-'+i).html(``+data[i].title+``);
-                //                 $('.text-'+i).html(`
-                //                 <textarea data-length="50" class="form-control char-textarea" id="`+data[i].data_type+`" name="requirement_value[`+i+`]" rows="4" placeholder=""></textarea>
-                //             `);
-                //             }else
-                //             {
-                //                 $('.label-'+i).html(``+data[i].title+``);
-                //                 $('.input-'+i).html(`
-                //                     <input type="`+data[i].data_type+`"  class="form-control" placeholder="`+data[i].title+`" name="requirement_value[`+i+`]">
-                //                 `);
-                //             }
-
                 $('.dropify').dropify();
 
-                        // $(document).on('click','#lain', function(event){
-                        // $('.input-lain').html(`
-                        //     <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">
-                        //     `);
-
-                        // });
-
                 $('#modal-letter').modal('show');
-                //     }
-                // })
+
             });
 
 
+            $(document).on('click','#btn-print', function(event){
+                event.preventDefault();
 
+                printJS({
+                    printable: 'print',
+                    type: 'html',
+                    style:'table{width:100%}',
+                    css:[
+                        '../../app-assets/css/bootstrap.css',
+                        '../../css/app.css',
+                        '../../css/style.css',
+                        '../../app-assets/css/colors.css',
+                        '../../app-assets/css/bootstrap-extended.css',
+                        '../../app-assets/css/components.css'
+                    ],
+                    documentTitle: Date.now()+'_lembar disposisi'
+                });
+
+                document.title = Date.now()+'_lembar disposisi';
+
+            });
 
             $(document).on('click', '.btn-detail', function(event){
                 event.preventDefault();
@@ -56,11 +50,9 @@
                 var url = $(this).attr('href');
                 var dt = LetterTable.table().row($(this).parents('tr')).data();
 
-
                 $('div#catatan').html("");
 
                 $.get(url, function(data){
-
                     $('#form-letter-create').find('input[name="name"]').val(data.name).attr("disabled", true);
                         $('input[name="from"]').val(data.from).attr("disabled", true);
                         $('input[name="letter_number"]').val(data.letter_number).attr("disabled", true);
@@ -71,7 +63,6 @@
                         $('textarea[name="about"]').val(data.about).attr("disabled", true);
 
                         for(i in data.unit_letter){
-                            // $('input[name="wish['+i+']"][value="'+data.unit_letter[i]?.wish_id+'"]').prop('checked', true);
                             $('#d-'+data.unit_letter[i].wish_id).val(data.unit_letter[i].wish_id).prop('checked', true).attr("disabled", true);
 
                             if(data.unit_letter[i].other_wishes!=null){
@@ -80,29 +71,22 @@
                                             <input type="text" name="lain" value="`+data.unit_letter[i].other_wishes+`" style="outline: 0; border-width: 0 0 2px; " disabled>
                             `);
                             }
-                            // console.log(data.unit_letter[i]?.wish_id);
                         }
 
                         for(i in data.letter_user){
                             $('#d-'+data.letter_user[i].position_id).val(data.letter_user[i].position_id).prop('checked', true).attr("disabled", true);
 
-                        if (data.letter_user[i].note != null){
-                            $('div#catatan').append(`
-                                <p>`+data.letter_user[i].note+`</p>
-                            `);
-                        }
-
-
+                            if (data.letter_user[i].note != null){
+                                $('div#catatan').append(`
+                                    <p>`+data.letter_user[i].note+`</p>
+                                `);
+                            }
                         }
                         $('div#files').append(`
                             <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="150%" height="600">
                             </embed></p>
                         `);
-
-
-
                         showModal('modal-document');
-
                 });
 
                 $(document).on('hide.bs.modal','#modal-document', function(event){
@@ -119,41 +103,18 @@
                 $('#form-letter-create').trigger("reset");
                 $('#form-letter-create').attr('action', $(this).attr('href'));
                 $('#form-letter-create').attr('method','PUT');
-                // $('#form-letter-create').attr('enctype','multipart/form-data');
-
-
 
                 $.get(url, function(data){
-                        // $('#form-letter-create').find('input[name="name"]').val(data.name);
-                        // $('#form-letter-create').find('input[name="from"]').val(data.from);
-                        // $('#form-letter-create').find('input[name="letter_number"]').val(data.letter_number);
-                        // $('#form-letter-create').find('input[name="date"]').val(data.date);
-                        // $('#form-letter-create').find('input[name="agenda_number"]').val(data.agenda_number);
-                        // $('#form-letter-create').find('input[name="received_date"]').val(data.received_date);
-                        // $('#form-letter-create').find('input[name="sifat"][value="'+data.trait+'"]').prop('checked', true);
-                        // $('#form-letter-create').find('textarea[name="about"]').val(data.about);
 
                         for(i in data.unit_letter){
-                            // $('input[name="wish['+i+']"][value="'+data.unit_letter[i]?.wish_id+'"]').prop('checked', true);
                             $('#'+data.unit_letter[i]?.wish_id).val(data.unit_letter[i]?.wish_id).prop('checked', true).attr("disabled", true);
-
-                            // if (data.unit_letter[i]?.wish_id=="#f9c5e916-6a13-427a-ab2c-60b021c148a4"){
-
-                            // }
-                            // console.log(data.unit_letter[i]?.wish_id);
                         }
 
 
                         for(i in data.letter_user){
-
                             $('#'+data.letter_user[i]?.position_id).val(data.letter_user[i]?.position_id).prop('checked', true).attr("disabled", true);
                         }
 
-                        // $(document).on('click','#lain', function(event){
-                        //     $('.input-lain').html(`
-                        //         <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">
-                        //     `);
-                        // });
                         $(document).on('click','#f9c5e916-6a13-427a-ab2c-60b021c148a4', function(event){
                                     $('.input-lain').html(`
                                         <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">

@@ -76,9 +76,6 @@
                                     <div class="form-group">
                                         <div class="d-flex justify-content-between">
                                             <label for="password">Password</label>
-                                            {{-- <a href="{{ route('password.request') }}">
-                                                <small>Forgot Password?</small>
-                                            </a> --}}
                                         </div>
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input type="password" class="form-control form-control-merge" id="password" name="password" tabindex="2" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />
@@ -87,40 +84,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="form-group">
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" type="checkbox" id="remember-me" tabindex="3" />
-                                            <label class="custom-control-label" for="remember-me"> Ingat Saya </label>
-                                        </div>
-                                    </div> --}}
                                     <button type="submit" class="btn btn-bppm btn-block" tabindex="4">Sign in</button>
                                 </form>
-{{--
-                                <p class="text-center mt-2">
-                                    <span>Belum punya akun?</span>
-                                    <a href="{{route('register')}}">
-                                        <span>Buat Akun</span>
-                                    </a>
-                                </p> --}}
-
-                                {{-- <div class="divider my-2">
-                                    <div class="divider-text">atau</div>
-                                </div>
-
-                                <div class="auth-footer-btn d-flex justify-content-center">
-                                    <a href="javascript:void(0)" class="btn btn-facebook">
-                                        <i data-feather="facebook"></i>
-                                    </a>
-                                    <a href="javascript:void(0)" class="btn btn-twitter white">
-                                        <i data-feather="twitter"></i>
-                                    </a>
-                                    <a href="javascript:void(0)" class="btn btn-google">
-                                        <i data-feather="mail"></i>
-                                    </a>
-                                    <a href="javascript:void(0)" class="btn btn-github">
-                                        <i data-feather="github"></i>
-                                    </a>
-                                </div> --}}
                             </div>
                         </div>
                         <!-- /Login v1 -->

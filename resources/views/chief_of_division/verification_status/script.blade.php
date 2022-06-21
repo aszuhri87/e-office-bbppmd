@@ -4,10 +4,10 @@
             formSubmit();
             initAction();
 
-
             $('#select-letter').select2({
                     placeholder: "Pilih lembar/surat...",
                     minimumInputLength: 2,
+                    language: { inputTooShort: function () { return 'Ketik minimal 2 karakter'; } },
                     ajax: {
                         url: '/chief_div/verification/find',
                         dataType: 'json',
@@ -29,25 +29,11 @@
         const initAction = () => {
             $('#select-letter').on('select2:select', function (e) {
                 e.preventDefault();
-                // var url = $(this).attr('admin/verification/show');
-
-                // var dt = LetterTable.table().row($(this).parents('tr')).data();
-                // $('#form-doc-create').trigger("reset");
-                // $('#form-doc-create').attr('action', $(this).attr('href'));
-                // $('#form-doc-create').attr('method','PUT');
-                // $('#form-doc-create').attr('enctype','multipart/form-data');
 
                 var dt = e.params.data.id;
                 // var id = dt.id;
                 var url =  $('#form-verif').attr('action','{{url('chief_div/verification/show')}}');
 
-
-
-                // var dt = LetterTable.table().row($(this).parents('tr')).data();
-                // $('#form-doc-create').trigger("reset");
-                // $('#form-doc-create').attr('action', $(this).attr('href'));
-                // $('#form-doc-create').attr('method','PUT');
-                // $('#form-doc-create').attr('enctype','multipart/form-data');
                 $.get('/chief_div/verification/show/'+dt, function(data){
 
                      $('#timeline_data_create').html(`
@@ -66,23 +52,6 @@
                     $('div#tim').html("");
                     for (let i in data.letter_user){
 
-
-                    // if(data.letter_user[0]){
-                    // $('#form-verif').html(`
-                    // <span class="timeline-point">
-                    //     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0019ff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
-                    // </span>
-
-                    // <div class="timeline-event">
-                    //     <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                    //         <h6>Lembar Dibuat</h6>
-                    //         </div>
-                    //         <p>Lembar disposisi dibuat oleh `+data.letter_user[0].p_level+`</p>
-
-                    //     </div>
-                    // `);
-                    // }
-
                         $('div#tim').append(`
                         <li class="timeline-item tim">
                         <span class="timeline-point timeline-point-warning">
@@ -99,13 +68,6 @@
                         </li>
                         `);
 
-                    // $('#timeline_data2').html(`
-                    //     <div class="d-flex justify-content-between flex-sm-row flex-column mb-sm-0 mb-1">
-                    //         <h6>Lembar Dibuat</h6>
-                    //     </div>
-                    //     <p>Lembar disposisi diisi oleh `+data.letter_user[i].p_level+`</p>
-
-                    // `);
                 }
 
                 if(data.status == 'Disetujui'){
@@ -139,14 +101,11 @@
                     `);
                 }
 
-
                 });
 
             $('.collapse').collapse();
 
             });
-
-
 
             $(document).on('click', '.btn-edit', function(event){
                 event.preventDefault();

@@ -10,44 +10,38 @@
             $(document).on('click','#create-letter-modal', function(event){
                 event.preventDefault();
 
-                // var id_req = $(this).find('option:selected').val();
                 $('#form-letter-create').trigger("reset");
                 $('#form-letter-create').attr('action','{{url('chief_div/letter-chief_div')}}');
                 $('#form-letter-create').attr('method','POST');
                 $('#form-letter-create').attr('enctype','multipart/form-data');
-
-                // $.get('/applicant/document-select/'+id, function(data){
-                //     $('#form-doc-create').find('input[name="id_cat"]').val(id);
-                //         for (i in data){
-                //             if(data[i].data_type == "textarea"){
-                //                 $('.label-'+i).html(``+data[i].title+``);
-                //                 $('.text-'+i).html(`
-                //                 <textarea data-length="50" class="form-control char-textarea" id="`+data[i].data_type+`" name="requirement_value[`+i+`]" rows="4" placeholder=""></textarea>
-                //             `);
-                //             }else
-                //             {
-                //                 $('.label-'+i).html(``+data[i].title+``);
-                //                 $('.input-'+i).html(`
-                //                     <input type="`+data[i].data_type+`"  class="form-control" placeholder="`+data[i].title+`" name="requirement_value[`+i+`]">
-                //                 `);
-                //             }
-
                 $('.dropify').dropify();
 
-                        // $(document).on('click','#lain', function(event){
-                        // $('.input-lain').html(`
-                        //     <input type="text" name="lain" style="outline: 0; border-width: 0 0 2px; border-color: blue">
-                        //     `);
-
-                        // });
-
                 $('#modal-letter').modal('show');
-                //     }
-                // })
+
             });
 
 
+            $(document).on('click','#btn-print', function(event){
+                event.preventDefault();
 
+                printJS({
+                    printable: 'print',
+                    type: 'html',
+                    style:'table{width:100%}',
+                    css:[
+                        '../../app-assets/css/bootstrap.css',
+                        '../../css/app.css',
+                        '../../css/style.css',
+                        '../../app-assets/css/colors.css',
+                        '../../app-assets/css/bootstrap-extended.css',
+                        '../../app-assets/css/components.css'
+                    ],
+                    documentTitle: Date.now()+'_lembar disposisi'
+                });
+
+                document.title = Date.now()+'_lembar disposisi';
+
+            });
 
             $(document).on('click', '.btn-detail', function(event){
                 event.preventDefault();
@@ -113,23 +107,13 @@
                 $('#form-letter-create').trigger("reset");
                 $('#form-letter-create').attr('action', $(this).attr('href'));
                 $('#form-letter-create').attr('method','PUT');
-                // $('#form-letter-create').attr('enctype','multipart/form-data');
-
-
 
                 $.get(url, function(data){
-                        // $('#form-letter-create').find('input[name="name"]').val(data.name);
-                        // $('#form-letter-create').find('input[name="from"]').val(data.from);
-                        // $('#form-letter-create').find('input[name="letter_number"]').val(data.letter_number);
-                        // $('#form-letter-create').find('input[name="date"]').val(data.date);
-                        // $('#form-letter-create').find('input[name="agenda_number"]').val(data.agenda_number);
-                        // $('#form-letter-create').find('input[name="received_date"]').val(data.received_date);
-                        // $('#form-letter-create').find('input[name="sifat"][value="'+data.trait+'"]').prop('checked', true);
 
                         for(i in data.unit_letter){
-                            // $('input[name="wish['+i+']"][value="'+data.unit_letter[i]?.wish_id+'"]').prop('checked', true);
+
                             $('#'+data.unit_letter[i]?.wish_id).val(data.unit_letter[i]?.wish_id).prop('checked', true).attr("disabled", true);
-                            // console.log(data.unit_letter[i]?.wish_id);
+
                         }
 
                         for(i in data.letter_user){
@@ -241,10 +225,6 @@
                     url: $(this).attr('action'),
                     type: $(this).attr('method'),
                     data: $(this).serialize(),
-                    // data: new FormData(this),
-                    // contentType: false,
-                    // cache: false,
-                    // processData: false,
 
                 })
                 .done(function(res, xhr, meta) {

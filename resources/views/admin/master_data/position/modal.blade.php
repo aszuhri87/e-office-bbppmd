@@ -29,19 +29,8 @@
                                     <option value="{{$dt->name}}">{{$dt->name}}</option>
                                     @endforeach
                                     </select>
-                                {{-- </div> --}}
-                                {{-- <input type="text" class="form-control" name="level" placeholder="Level" aria-label="Level" aria-describedby="level" /> --}}
-                            </div>
-
-
-                            {{--
-                            <label for="description" class="form-label">Deskripsi</label>
-                            <div class="input-group">
-
-                            <textarea data-length="50" class="form-control char-textarea" id="description" name="description" rows="3" placeholder=""></textarea>
 
                             </div>
-                            <small class="textarea-counter-value float-right bg-bppm"><span class="char-count">0</span> / 50 </small> --}}
                     </div>
                 </div>
                 <div class="modal-footer">

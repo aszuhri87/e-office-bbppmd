@@ -13,7 +13,7 @@
                             <h2 class="content-header-title float-left mb-0">Status Disposisi</h2>
                             <div class="breadcrumb-wrapper">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">>Home
+                                    <li class="breadcrumb-item">Home
                                     </li>
                                     <li class="breadcrumb-item active">Status Disposisi
                                     </li>
@@ -63,16 +63,7 @@
 
                                         </li>
                                         <div id="tim" class="mb-1">
-
-
                                         </div>
-
-{{--
-                                        </li>
-                                        <li class="timeline-item" id="timeline_data1">
-
-                                        </li> --}}
-
                                         <li class="timeline-item" id="timeline_done">
 
                                         </li>

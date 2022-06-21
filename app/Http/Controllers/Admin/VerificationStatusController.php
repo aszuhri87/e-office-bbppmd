@@ -42,12 +42,8 @@ class VerificationStatusController extends Controller
         $letters = DB::table('letters')
         ->select([
             'letters.id',
-
             'letters.created_by',
             DB::raw("CONCAT(letters.letter_number,' - ',letters.from) as name"),
-            // ])
-            // ->joinSub($letter_user, 'letter_user', function ($join) {
-            //     $join->on('letter_user.letter_id', 'letters.id');
             ])
         ->where('letters.letter_number', 'ilike', '%'.$term.'%')
         ->whereNull('letters.deleted_at')

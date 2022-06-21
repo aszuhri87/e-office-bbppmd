@@ -24,6 +24,7 @@
                     { data: 'from',},
                     { data: 'tanggal', "searchable": false  },
                     { data: 'letter_number' },
+                    { data: 'agenda_number' },
                     { data: 'letter_user[].p_level',
                     "render": function (value, type, row) {
                         var val = [];
