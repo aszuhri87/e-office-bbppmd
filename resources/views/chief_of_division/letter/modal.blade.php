@@ -107,7 +107,7 @@
 
                         </div>
                     </div>
-                    <hr style="border: solid black; ">
+                    <hr id="garis" style="border: solid black; ">
                     <div class="text-center" style=" font-family: 'Times New Roman', Times, serif;">
                         <h5>LEMBAR DISPOSISI
                         <br>BALAI BESAR PELATIHAN DAN PEMBERDAYAAN MASYARAKAT DESA, <br> DAERAH TERTINGGAL, DAN TRANSMIGRASI YOGYAKARTA
@@ -115,26 +115,26 @@
                     </div>
 
 
-                    <table style="border: solid 1px black;" >
+                    <table style="border: solid 1px black; width:100%;" >
                         <tr style="border: solid 1px black;">
-                            <td style="border: solid 1px black; width: 550px; padding:10px;" rowspan="4">
+                            <td style="border: solid 1px black; width: 600px; padding:10px;" rowspan="4">
                                 Surat dari  : <input type="text" name="from" style="border: 0;"><br><br>
                                 Nomor Surat : <input type="text" name="letter_number" style="border: 0; width:80%;"><br><br>
                                 Tgl Surat   : <input type="text" name="date" style="border: 0;"><br><br>
                             </td>
-                            <td style="border: solid 1px black; width: 150px; padding:10px;">Diterima Tgl</td>
+                            <td style="border: solid 1px black; width: 200px; padding:10px;">Diterima Tgl</td>
                             <td style="border: solid 1px black; padding:10px;">:</td>
                             <td style="border: solid 1px black; width: 250px; padding:10px;"><input type="text" name="received_date" style="border: 0;"></td>
                         </tr>
                         <tr style="border: solid 1px black;">
                             {{-- <td style="border: solid 1px black; width: 550px; padding:10px;"> </td> --}}
-                            <td style="border: solid 1px black; width: 150px; padding:10px;">Nomor Agenda</td>
+                            <td style="border: solid 1px black; width: 200px; padding:10px;">Nomor Agenda</td>
                             <td style="border: solid 1px black; padding:10px;">:</td>
                             <td style="border: solid 1px black; width: 250px; padding:10px;"><input type="text" name="agenda_number" style="border: 0;"></td>
                         </tr>
                         <tr style="border: solid 1px black;">
                             {{-- <td style="border: solid 1px black; width: 550px; padding:10px;">Nomor Surat : </td> --}}
-                            <td style="border: solid 1px black; width: 150px; padding:10px;">Sifat</td>
+                            <td style="border: solid 1px black; width: 200px; padding:10px;">Sifat</td>
                             <td style="border: solid 1px black; padding:10px;">:</td>
                             <td style="border: solid 1px black; width: 250px; padding:10px;"><input type="text" name="trait" style="border: 0;"></td>
                         </tr>

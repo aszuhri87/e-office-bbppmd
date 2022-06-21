@@ -35,7 +35,7 @@
                 printJS({
                     printable: 'print',
                     type: 'html',
-                    style:'table{width:100%}',
+                    // style:'table{width:100%}',
                     css:[
                         '../../app-assets/css/bootstrap.css',
                         '../../css/app.css',
