@@ -501,21 +501,25 @@ class LetterController extends ApiController
         ]
             )->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4', 'potrait');
 
+        $pdfVersion = '1.4';
+        $newFile = public_path('files/'.date('Y-m-d_s').'_'.$data->letter_number.'.pdf');
+        $currentFile = public_path('files/"'.$data->letter_file.'"');
+
+        echo shell_exec("gs -sDEVICE=pdfwrite  -dPDFFitPage -dCompatibilityLevel=1.4 -dEmbedAllFonts=true -dDownsampleColorImages=false -dDownsampleGrayImages=false -dDownsampleMonoImages=false -f -dCompatibilityLevel=$pdfVersion -dNOPAUSE -dBATCH -sOutputFile=$newFile $currentFile");
+
+        ob_end_clean();
+
         Storage::put('public/pdf/'.date('Y-m-d_s').' '.$data->letter_number.'.pdf', $pdf->output());
 
         $pdfMerge = PDFMerger::init();
 
-        // foreach ($request->file('filenames') as $key => $value) {
-        //     $pdf->addPDF($value->getPathName(), 'all');
-        // }
-
         $pdfMerge->addPDF(storage_path('app/public/pdf/'.date('Y-m-d_s').' '.$data->letter_number.'.pdf'), 'all');
-        $pdfMerge->addPDF(public_path('files/'.$data->letter_file), 'all');
+        $pdfMerge->addPDF($newFile, 'all');
 
         $fileName = 'dokumen_lengkap_'.time().'.pdf';
         $pdfMerge->merge();
         $pdfMerge->save(public_path($fileName));
 
-        return response()->download(public_path($fileName));
+        return $pdfMerge->stream(public_path($fileName));
     }
 }

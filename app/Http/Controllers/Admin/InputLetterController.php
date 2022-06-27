@@ -211,6 +211,8 @@ class InputLetterController extends Controller
         ]
             )->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4', 'potrait');
 
+        ob_end_clean();
+
         Storage::put('public/pdf/'.date('Y-m-d_s').' '.$data->letter_number.'.pdf', $pdf->output());
 
         $pdfMerge = PDFMerger::init();
@@ -227,6 +229,6 @@ class InputLetterController extends Controller
         $pdfMerge->merge();
         $pdfMerge->save(public_path($fileName));
 
-        return response()->download(public_path($fileName));
+        return $pdfMerge->stream(public_path($fileName));
     }
 }
