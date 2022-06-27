@@ -227,6 +227,6 @@ class InputLetterController extends Controller
         $pdfMerge->merge();
         $pdfMerge->save(public_path($fileName));
 
-        return $pdfMerge->stream(public_path($fileName));
+        return $pdfMerge->download(public_path($fileName));
     }
 }
