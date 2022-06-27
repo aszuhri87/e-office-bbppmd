@@ -172,6 +172,12 @@ class InputLetterController extends Controller
         ->whereNull('letters.deleted_at')
         ->first();
 
+        $pdfVersion = '1.4';
+        $newFile = public_path('files/new/'.$data->letter_file);
+        $currentFile = public_path('files/'.$data->letter_file);
+
+        shell_exec("gs -sDEVICE=pdfwrite -dCompatibilityLevel=$pdfVersion -dNOPAUSE -dBATCH -sOutputFile=$newFile $currentFile");
+
         $wish = DB::table('wishes')
         ->select('*')
         ->whereNull('deleted_at')
@@ -206,11 +212,6 @@ class InputLetterController extends Controller
             )->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4', 'potrait');
 
         Storage::put('public/pdf/'.date('Y-m-d_s').' '.$data->letter_number.'.pdf', $pdf->output());
-
-        $pdfVersion = '1.4';
-        $newFile = public_path('files/new/'.$data->letter_file);
-        $currentFile = public_path('files/'.$data->letter_file);
-        exec("gs -sDEVICE=pdfwrite -dCompatibilityLevel=$pdfVersion -dNOPAUSE -dBATCH -sOutputFile=$newFile $currentFile");
 
         $pdfMerge = PDFMerger::init();
 
