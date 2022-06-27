@@ -213,6 +213,7 @@ class InputLetterController extends Controller
 
         Storage::put('public/pdf/'.date('Y-m-d_s').' '.$data->letter_number.'.pdf', $pdf->output());
 
+        echo ob_start();
         $pdfMerge = PDFMerger::init();
 
         // foreach ($request->file('filenames') as $key => $value) {
@@ -229,6 +230,6 @@ class InputLetterController extends Controller
 
         echo ob_end_flush();
 
-        return $pdfMerge->download(public_path($fileName));
+        return $pdfMerge->stream(public_path($fileName));
     }
 }
