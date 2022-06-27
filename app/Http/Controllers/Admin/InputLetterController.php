@@ -178,6 +178,8 @@ class InputLetterController extends Controller
 
         echo shell_exec("gs -sDEVICE=pdfwrite -dCompatibilityLevel=$pdfVersion -dNOPAUSE -dBATCH -sOutputFile=$newFile $currentFile");
 
+        echo ob_clean();
+
         $wish = DB::table('wishes')
         ->select('*')
         ->whereNull('deleted_at')
@@ -213,7 +215,6 @@ class InputLetterController extends Controller
 
         Storage::put('public/pdf/'.date('Y-m-d_s').' '.$data->letter_number.'.pdf', $pdf->output());
 
-        echo ob_start();
         $pdfMerge = PDFMerger::init();
 
         // foreach ($request->file('filenames') as $key => $value) {
@@ -227,8 +228,6 @@ class InputLetterController extends Controller
         $fileName = 'dokumen_lengkap_'.time().'.pdf';
         $pdfMerge->merge();
         $pdfMerge->save(public_path($fileName));
-
-        echo ob_end_flush();
 
         return $pdfMerge->stream(public_path($fileName));
     }
