@@ -44,7 +44,7 @@ class DoneController extends ApiController
                 'wish' => $wish,
                 'position' => $position,
             ]
-    );
+        );
     }
 
     public function dt()
@@ -56,16 +56,11 @@ class DoneController extends ApiController
         $data = Letter::select([
             'letters.*',
             'letters.id',
-            // 'letter_unit.wishes_id',
-            // 'letter_user.position_id',
-            // 'letter_user.p_level',
         ])
         ->with(['unit_letter' => function ($query) {
-            $query->select(
-                ['unit_letters.*', 'letter_wishes.unit_letter_id', 'letter_wishes.*', 'letter_wishes.wish_id', 'wishes.id as wishes_id', 'wishes.name as wish_name']
-                )
-
-                ->join('letter_wishes', 'letter_wishes.unit_letter_id', 'unit_letters.id')
+            $query->select([
+                'unit_letters.*', 'letter_wishes.unit_letter_id', 'letter_wishes.*', 'letter_wishes.wish_id', 'wishes.id as wishes_id', 'wishes.name as wish_name',
+                ])->join('letter_wishes', 'letter_wishes.unit_letter_id', 'unit_letters.id')
                 ->leftJoin('wishes', 'wishes.id', 'letter_wishes.wish_id')
                 // ->where('unit_letters.letter_id', $id)
                 ->whereNull('unit_letters.deleted_at');

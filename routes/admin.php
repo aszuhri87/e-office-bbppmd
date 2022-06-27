@@ -43,5 +43,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['role:admin|superadmin']], f
 
     Route::post('/input-letter', [LetterController::class, 'store']);
     Route::get('/input-letter', [InputLetterController::class, 'index']);
+
+    Route::get('/download_pdf/{id}', [InputLetterController::class, 'print']);
+    Route::get('/download_all/{id}', [InputLetterController::class, 'download_all']);
 }
 );

@@ -28,7 +28,7 @@
                 printJS({
                     printable: 'print',
                     type: 'html',
-                    style:'.col-10{right:8%;}',
+                    style:'.col-10{right:7%;}',
                     css:[
                         '../../app-assets/css/bootstrap.css',
                         '../../css/app.css',
@@ -86,6 +86,18 @@
                             <embed class="mt-1" src="{{ asset('files/`+data.letter_file+`') }}" width="150%" height="600">
                             </embed></p>
                         `);
+
+                        $('div#link_pdf').append(`
+                            <a href="{{url('chief/download_pdf/`+data.id+`')}}" class="btn btn-light btn-sm btn-clean btn-icon" data-toggle="tooltip" data-placement="top" title="Print Lembar Disposisi"  >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#44559f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg></a>
+                        `);
+
+                        $('div#download_all').append(`
+                            <a href="{{url('chief/download_all/`+data.id+`')}}" class="btn btn-light btn-sm btn-clean btn-icon" data-toggle="tooltip" data-placement="top" title="Download Semua Dokumen"  >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#44559f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15v4c0 1.1.9 2 2 2h14a2 2 0 0 0 2-2v-4M17 9l-5 5-5-5M12 12.8V2.5"/></svg>
+                            </a>
+                        `);
+
                         showModal('modal-document');
                 });
 
@@ -109,7 +121,6 @@
                         for(i in data.unit_letter){
                             $('#'+data.unit_letter[i]?.wish_id).val(data.unit_letter[i]?.wish_id).prop('checked', true).attr("disabled", true);
                         }
-
 
                         for(i in data.letter_user){
                             $('#'+data.letter_user[i]?.position_id).val(data.letter_user[i]?.position_id).prop('checked', true).attr("disabled", true);

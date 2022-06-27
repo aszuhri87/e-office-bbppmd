@@ -69,9 +69,13 @@
         <div class="modal-dialog modal-dialog-centered" role="document" style="min-width:1000px; ">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" id="btn-print" data-toggle="tooltip" data-placement="top" title="Print Lembar Disposisi" class="btn btn-outline-primary" style="border-radius: 50px;" >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#44559f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
-                    </button>
+                    <div id="link_pdf">
+
+                    </div>
+
+                    <div id="download_all">
+
+                    </div>
                     <br>
                     <h5 class="modal-title" id="SubUnitModalTitle"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">

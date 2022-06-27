@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Mail;
+use PDF;
 use Yajra\DataTables\Facades\DataTables;
 
 class LetterController extends ApiController
@@ -284,6 +285,43 @@ class LetterController extends ApiController
                 'message' => $e->getMessage(),
             ], 500);
         }
+    }
+
+    public function print()
+    {
+        $wish = DB::table('wishes')
+        ->select('*')
+        ->whereNull('deleted_at')
+        ->orderBy('created_at', 'asc')
+        ->get();
+
+        $position = DB::table('positions')
+        ->select([
+            'id',
+            DB::raw("CONCAT(positions.level,' ', positions.name) as p_level"),
+        ])
+        ->where('positions.level', '!=', 'Admin')
+        ->where('positions.level', '!=', 'Super Admin')
+        ->whereNull('deleted_at')
+        ->orderBy('created_at', 'asc')
+        ->get();
+
+        // dd($position);
+
+        //     return view('admin.letter.index',
+        //         [
+        //             'wish' => $wish,
+        //             'position' => $position,
+        //         ]
+        // );
+        $pdf = PDF::loadview('admin.letter.index',
+        [
+            'wish' => $wish,
+            'position' => $position,
+        ]
+        )->setPaper('A4', 'potrait');
+
+        return $pdf->download();
     }
 
     public function destroy($id)

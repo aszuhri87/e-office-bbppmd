@@ -6,11 +6,6 @@
             $('#change-profile').attr('method','POST');
             $('#change-profile').attr('enctype','multipart/form-data');
 
-            // $.get('applicant/profile/'+data.id, function(data){
-            // $('#form-doc-accepted').find('textarea[name="description"]').val(data.description);
-            // $('#form-doc-accepted').find('input[name="gender"][value=' + data.status + ']').prop('checked', true);
-            // });
-
             formSubmit();
             initAction();
         });

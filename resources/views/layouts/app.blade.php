@@ -153,7 +153,7 @@
    <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
 
 
-
+   <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
 
    <script src="../../../app-assets/js/scripts/forms/form-file-uploader.js"></script>
 

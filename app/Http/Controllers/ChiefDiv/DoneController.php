@@ -45,7 +45,7 @@ class DoneController extends ApiController
                 'wish' => $wish,
                 'position' => $position,
             ]
-    );
+        );
     }
 
     public function dt()

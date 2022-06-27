@@ -16,5 +16,8 @@ Route::group(['prefix' => 'chief_div', 'middleware' => ['role:chief_of_division|
     Route::get('/verification/find', [VerificationStatusController::class, 'find']);
 
     Route::get('/verification/show/{id}', [VerificationStatusController::class, 'show']);
+
+    Route::get('/download_pdf/{id}', [LetterController::class, 'print']);
+    Route::get('/download_all/{id}', [LetterController::class, 'download_all']);
 }
 );
