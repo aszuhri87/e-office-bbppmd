@@ -173,7 +173,7 @@ class InputLetterController extends Controller
         ->first();
 
         $pdfVersion = '1.4';
-        $newFile = public_path('files/new/'.$data->letter_file);
+        $newFile = public_path('files/new/'.date('Y-m-d_s').'_'.$data->letter_number.'.pdf');
         $currentFile = public_path('files/'.$data->letter_file);
 
         echo shell_exec("gs -sDEVICE=pdfwrite -dCompatibilityLevel=$pdfVersion -dNOPAUSE -dBATCH -sOutputFile=$newFile $currentFile");
