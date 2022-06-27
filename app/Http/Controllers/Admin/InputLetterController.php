@@ -207,14 +207,19 @@ class InputLetterController extends Controller
 
         Storage::put('public/pdf/'.date('Y-m-d_s').' '.$data->letter_number.'.pdf', $pdf->output());
 
+        $newFile = public_path('files/'.$data->letter_file);
+        $currentFile = public_path('files/new/'.$data->letter_file);
+        exec("gs -sDEVICE=pdfwrite -dCompatibilityLevel=$pdfVersion -dNOPAUSE -dBATCH -sOutputFile=$newFile $currentFile");
+
         $pdfMerge = PDFMerger::init();
 
         // foreach ($request->file('filenames') as $key => $value) {
         //     $pdf->addPDF($value->getPathName(), 'all');
+
         // }
 
         $pdfMerge->addPDF(storage_path('app/public/pdf/'.date('Y-m-d_s').' '.$data->letter_number.'.pdf'), 'all');
-        $pdfMerge->addPDF(public_path('files/'.$data->letter_file), 'all');
+        $pdfMerge->addPDF(public_path('files/new/'.$data->letter_file), 'all');
 
         $fileName = 'dokumen_lengkap_'.time().'.pdf';
         $pdfMerge->merge();
