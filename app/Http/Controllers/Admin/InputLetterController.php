@@ -176,7 +176,7 @@ class InputLetterController extends Controller
         $newFile = public_path('files/new/'.$data->letter_file);
         $currentFile = public_path('files/'.$data->letter_file);
 
-        shell_exec("gs -sDEVICE=pdfwrite -dCompatibilityLevel=$pdfVersion -dNOPAUSE -dBATCH -sOutputFile=$newFile $currentFile");
+        echo shell_exec("gs -sDEVICE=pdfwrite -dCompatibilityLevel=$pdfVersion -dNOPAUSE -dBATCH -sOutputFile=$newFile $currentFile");
 
         $wish = DB::table('wishes')
         ->select('*')
