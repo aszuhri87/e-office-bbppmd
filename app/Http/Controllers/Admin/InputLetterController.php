@@ -174,7 +174,7 @@ class InputLetterController extends Controller
 
         $pdfVersion = '1.4';
         $newFile = public_path('files/'.date('Y-m-d_s').'_'.$data->letter_number.'.pdf');
-        $currentFile = public_path('files/2022-06-07_59_qr-code-A2.pdf');
+        $currentFile = public_path('files/"'.$data->letter_file.'"');
 
         echo shell_exec("gs -sDEVICE=pdfwrite  -dPDFFitPage -dCompatibilityLevel=1.4 -dEmbedAllFonts=true -dDownsampleColorImages=false -dDownsampleGrayImages=false -dDownsampleMonoImages=false -f -dCompatibilityLevel=$pdfVersion -dNOPAUSE -dBATCH -sOutputFile=$newFile $currentFile");
 
