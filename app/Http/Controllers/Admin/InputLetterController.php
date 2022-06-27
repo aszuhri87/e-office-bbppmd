@@ -211,10 +211,7 @@ class InputLetterController extends Controller
         ]
             )->setOptions(['defaultFont' => 'sans-serif'])->setPaper('A4', 'potrait');
 
-        echo ob_start();
         Storage::put('public/pdf/'.date('Y-m-d_s').' '.$data->letter_number.'.pdf', $pdf->output());
-
-        echo ob_end_flush();
 
         $pdfMerge = PDFMerger::init();
 
