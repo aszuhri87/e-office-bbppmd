@@ -123,8 +123,6 @@ class InputLetterController extends Controller
 
         Storage::put('public/pdf/'.$name, $pdf->output());
 
-        // dd($pdf);
-
         return $pdf->stream($name);
     }
 
@@ -222,6 +220,6 @@ class InputLetterController extends Controller
         $pdfMerge->merge();
         $pdfMerge->save(public_path($fileName));
 
-        return response()->download(public_path($fileName));
+        return $pdfMerge->stream(public_path($fileName));
     }
 }
